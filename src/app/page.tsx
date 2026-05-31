@@ -7,6 +7,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AIAssistantFAB } from "@/components/AIAssistantFAB";
 import { SearchWidget } from "@/components/SearchWidget";
+import { ExploreFlightsSection } from "@/components/ExploreFlightsSection";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -52,7 +53,7 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
               <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all h-80">
-                <Image alt="Swiss Alps" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvvHYTPkxrOawM6r39p9MJPZj8APKSDB-UvYiP4FWo_ipEwfwfS6_VpKh3owTyExPu6uHm4OrcpVy18iAYmo-KoWxZYMAppXFoeQBpQX_5B2i1Gmrn7BwPir2wk65htCsULvLXKveGkvenVsFR8TQlWhQDCd0WjrXIX1QL7JopaN3crqCnKUVPFu4Ei5Q9KGail3kLn9AwW1aa4G7n6joqIPavUOXBX1K7q1iX3rn0YZoyw1y0hxgM-hDc6wY-jPKxKOeQOBzCxQ" fill />
+                <Image alt="Swiss Alps" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvvHYTPkxrOawM6r39p9MJPZj8APKSDB-UvYiP4FWo_ipEwfwfS6_VpKh3owTyExPu6uHm4OrcpVy18iAYmo-KoWxZYMAppXFoeQBpQX_5B2i1Gmrn7BwPir2wk65htCsULvLXKveGkvenVsFR8TQlWhQDCd0WjrXIX1QL7JopaN3crqCnKUVPFu4Ei5Q9KGail3kLn9AwW1aa4G7n6joqIPavUOXBX1K7q1iX3rn0YZoyw1y0hxgM-hDc6wY-jPKxKOeQOBzCxQ" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 dark:from-background/90 dark:via-background/40 to-transparent transition-colors"></div>
                 <div className="absolute bottom-6 left-6 text-white">
                   <div className="text-xs font-label-bold text-tertiary-fixed mb-1 uppercase tracking-wider">Adventure</div>
@@ -62,7 +63,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all h-80">
-                <Image alt="Maldives Resort" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZk_hEbHaDd9hzMeAvKZFBYDq8pwMVI2eEI-jxf55NMVypigqJIvaU0vsAbJnHa1pk1mg56QvzOIf8rBIEO5VwPcALlO_hka11uaCVnfngXjQCBXlubpD4Q-MRPSzGDRjRL-ee7nkfhLyT_W4Bug8bdCWGUJG8ZRGefDa7FoFakDMQxAT6Z2RLU5p-9XxLfLVdyC-sTqyVq9SfDfScs-mEdYNSoyisHB9dxwHB2VEUkiLQdl0jpt_nuPv9vKYwMOSDB362kbGObA" fill />
+                <Image alt="Maldives Resort" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZk_hEbHaDd9hzMeAvKZFBYDq8pwMVI2eEI-jxf55NMVypigqJIvaU0vsAbJnHa1pk1mg56QvzOIf8rBIEO5VwPcALlO_hka11uaCVnfngXjQCBXlubpD4Q-MRPSzGDRjRL-ee7nkfhLyT_W4Bug8bdCWGUJG8ZRGefDa7FoFakDMQxAT6Z2RLU5p-9XxLfLVdyC-sTqyVq9SfDfScs-mEdYNSoyisHB9dxwHB2VEUkiLQdl0jpt_nuPv9vKYwMOSDB362kbGObA" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 dark:from-background/90 dark:via-background/40 to-transparent transition-colors"></div>
                 <div className="absolute bottom-6 left-6 text-white">
                   <div className="text-xs font-label-bold text-tertiary-fixed mb-1 uppercase tracking-wider">Luxury</div>
@@ -72,7 +73,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all h-80">
-                <Image alt="Kyoto Temple" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZtk7U8a5jXVtSYCLnZyhr-RYAk7m0V3P0gjb8upOKniXp1A_mJLgxBdkkbSgmjcNTkYCp-b4yFXVuO_2HTlp90dkDB0H8TDC2eD9PuNOYgC0i-nWpkyW-qVNi8e7uLFPpvO4bSUy9SMb5XWjML9gIoANrHRnGSKRHDNkgWhPqouTNTCwDaYCz7OK_WkSc9jxHBFUqLOK15l0-K0H3U1dzXeB7hvZ2UEnvmLYySFdlWOW2dcRpY6ZRUrGVKwvtvLo06KLXitooOQ" fill />
+                <Image alt="Kyoto Temple" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZtk7U8a5jXVtSYCLnZyhr-RYAk7m0V3P0gjb8upOKniXp1A_mJLgxBdkkbSgmjcNTkYCp-b4yFXVuO_2HTlp90dkDB0H8TDC2eD9PuNOYgC0i-nWpkyW-qVNi8e7uLFPpvO4bSUy9SMb5XWjML9gIoANrHRnGSKRHDNkgWhPqouTNTCwDaYCz7OK_WkSc9jxHBFUqLOK15l0-K0H3U1dzXeB7hvZ2UEnvmLYySFdlWOW2dcRpY6ZRUrGVKwvtvLo06KLXitooOQ" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 dark:from-background/90 dark:via-background/40 to-transparent transition-colors"></div>
                 <div className="absolute bottom-6 left-6 text-white">
                   <div className="text-xs font-label-bold text-tertiary-fixed mb-1 uppercase tracking-wider">Cultural</div>
@@ -98,7 +99,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
               <div className="bg-surface-container-lowest dark:bg-surface-container rounded-xl overflow-hidden shadow-lg hover:shadow-primary/10 transition-all border border-outline-variant/20 group">
                 <div className="relative h-48">
-                  <Image alt="Agra, India" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNMJlWE3YLiIGsFHz_XYewjC1t0GqauhAOZ-YwrpI2dD90LUeIdXhQcreY3ltt1AuqfQ_VrWnfGkUYUukuaQBVcNjc5CylVX-NdS9PatVbgyrzFoziPmnm_O4Ot8-Crw3jvM_BxkuBq5jADzzxoOXONOQPBj90A6FnUGLCfOPRVtJcoT02w_hy2do6GjmdrIkrfhxZYi_pXarP62211FPgfrGvEMEhBeMkfzLHI1-VEjePyTy7Z-cZNrp8apZ3o_aIyFLdjcJ1MQ" fill />
+                  <Image alt="Agra, India" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNMJlWE3YLiIGsFHz_XYewjC1t0GqauhAOZ-YwrpI2dD90LUeIdXhQcreY3ltt1AuqfQ_VrWnfGkUYUukuaQBVcNjc5CylVX-NdS9PatVbgyrzFoziPmnm_O4Ot8-Crw3jvM_BxkuBq5jADzzxoOXONOQPBj90A6FnUGLCfOPRVtJcoT02w_hy2do6GjmdrIkrfhxZYi_pXarP62211FPgfrGvEMEhBeMkfzLHI1-VEjePyTy7Z-cZNrp8apZ3o_aIyFLdjcJ1MQ" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" />
                   <div className="absolute top-2 left-2 bg-error text-white font-label-bold text-[12px] px-2 py-1 rounded">Save 45%</div>
                 </div>
                 <div className="p-stack-md">
@@ -115,7 +116,7 @@ export default function Home() {
               </div>
               <div className="bg-surface-container-lowest dark:bg-surface-container rounded-xl overflow-hidden shadow-lg transition-all border border-outline-variant/20 group">
                 <div className="relative h-48">
-                  <Image alt="Tokyo, Japan" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO0PQYh2Nu05evh3TNIYEW2aVaufRIM0LE0N8H1KpgoAtAaX8OgesbBdXDZYz6hJPrLv0XvI8h4VySFVCKyPuqhBpcNnL_CfEboa_FjbfMc0T5aCZJ4fjS-suvQPJZiAuWmtTnLj1Ef6VzPlbAOlAT-TS93DSjRjEn3Tzw2-uCAyLTYQdkQt7WtdzCY50tr09pGnFW_PPw8Tv6LRO5D5Pi3VBD4oehExv3PN4PVWscUcPDIveNAzi48LihlRxeYSRiyIa90wm14w" fill />
+                  <Image alt="Tokyo, Japan" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO0PQYh2Nu05evh3TNIYEW2aVaufRIM0LE0N8H1KpgoAtAaX8OgesbBdXDZYz6hJPrLv0XvI8h4VySFVCKyPuqhBpcNnL_CfEboa_FjbfMc0T5aCZJ4fjS-suvQPJZiAuWmtTnLj1Ef6VzPlbAOlAT-TS93DSjRjEn3Tzw2-uCAyLTYQdkQt7WtdzCY50tr09pGnFW_PPw8Tv6LRO5D5Pi3VBD4oehExv3PN4PVWscUcPDIveNAzi48LihlRxeYSRiyIa90wm14w" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" />
                   <div className="absolute top-2 left-2 bg-error text-white font-label-bold text-[12px] px-2 py-1 rounded">Save 30%</div>
                 </div>
                 <div className="p-stack-md">
@@ -132,7 +133,7 @@ export default function Home() {
               </div>
               <div className="bg-surface-container-lowest dark:bg-surface-container rounded-xl overflow-hidden shadow-lg transition-all border border-outline-variant/20 group">
                 <div className="relative h-48">
-                  <Image alt="London, UK" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAumxqoWuP6v_VQq4T-zO20mMutGw3xEiFHaRm2B62ove9CfNxrxDZWhlZIs6fnwTpmwlqhH7euGiqq4kcHer1nXLXyl4E3Fb5FsF0HFYjSM2JmzaZkq8QugfOYTbVcNq-QILh-rVmamZOLfoGFXCXiucRNo4MHmCwCOjObXqVj5WSGk8GaGdc4w5oS1gSaLs9oxJ8v1LW3QYgNXWSI1eEAndb4fiw2SJ1LyYl8elf1Sb8CJagmCHgr07y6ltlW_ZvKZpP7lvU6jQ" fill />
+                  <Image alt="London, UK" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAumxqoWuP6v_VQq4T-zO20mMutGw3xEiFHaRm2B62ove9CfNxrxDZWhlZIs6fnwTpmwlqhH7euGiqq4kcHer1nXLXyl4E3Fb5FsF0HFYjSM2JmzaZkq8QugfOYTbVcNq-QILh-rVmamZOLfoGFXCXiucRNo4MHmCwCOjObXqVj5WSGk8GaGdc4w5oS1gSaLs9oxJ8v1LW3QYgNXWSI1eEAndb4fiw2SJ1LyYl8elf1Sb8CJagmCHgr07y6ltlW_ZvKZpP7lvU6jQ" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" />
                   <div className="absolute top-2 left-2 bg-error text-white font-label-bold text-[12px] px-2 py-1 rounded">Save 20%</div>
                 </div>
                 <div className="p-stack-md">
@@ -149,7 +150,7 @@ export default function Home() {
               </div>
               <div className="bg-surface-container-lowest dark:bg-surface-container rounded-xl overflow-hidden shadow-lg transition-all border border-outline-variant/20 group">
                 <div className="relative h-48">
-                  <Image alt="Santorini, Greece" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmA4OIfkVLRYJhvzjXUCpqvRUMJR0GRuF3EZjqzMufc3vorQ7JkBvHs4s1F0vzO1QCFlJmQ6JhCl2lS6f2BABXr0DHsy0n2-HaOTtwkScfS_K1QCI7BQ5IWMUhlZN1Wv7JWhDyjfdwev8Pg5Ag-zeIFJeUrn_7iOeBjpo1_umR7C2BQ29XDxayFXM0lnQ7Z-mrIn-acFYhES_lXC-p525j8Z1gUudLDwFY0i9h8Hah4l2uiHhjod5MYEOg25VKkwNhQsXwKVVGgg" fill />
+                  <Image alt="Santorini, Greece" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmA4OIfkVLRYJhvzjXUCpqvRUMJR0GRuF3EZjqzMufc3vorQ7JkBvHs4s1F0vzO1QCFlJmQ6JhCl2lS6f2BABXr0DHsy0n2-HaOTtwkScfS_K1QCI7BQ5IWMUhlZN1Wv7JWhDyjfdwev8Pg5Ag-zeIFJeUrn_7iOeBjpo1_umR7C2BQ29XDxayFXM0lnQ7Z-mrIn-acFYhES_lXC-p525j8Z1gUudLDwFY0i9h8Hah4l2uiHhjod5MYEOg25VKkwNhQsXwKVVGgg" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" />
                   <div className="absolute top-2 left-2 bg-error text-white font-label-bold text-[12px] px-2 py-1 rounded">Save 50%</div>
                 </div>
                 <div className="p-stack-md">
@@ -164,6 +165,110 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Live Flight Deals — Powered by Skyscanner API */}
+        <ExploreFlightsSection />
+
+        {/* Premium Experiences & Activities Section — Powered by Klook Affiliate */}
+        <section className="py-stack-lg bg-surface transition-colors duration-300">
+          <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+            <div className="flex flex-col md:flex-row justify-start md:justify-between items-start md:items-end mb-stack-md gap-2 md:gap-0">
+              <div>
+                <span className="inline-block bg-tertiary text-on-tertiary font-label-bold text-[10px] uppercase px-2 py-0.5 rounded-full mb-2">Book Attractions</span>
+                <h2 className="font-headline-md text-headline-md text-primary dark:text-white">Unforgettable Tours & Experiences</h2>
+                <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Discover skip-the-line tickets, day trips, and premium activities worldwide</p>
+              </div>
+              <a 
+                className="text-secondary font-label-bold hover:underline mb-1 flex items-center gap-1" 
+                href="https://tp.media/r?marker=734132&trs=534470&p=4110&u=https%3A%2F%2Fklook.com&campaign_id=137" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                Explore All Activities
+                <span className="material-symbols-outlined text-[16px]">open_in_new</span>
+              </a>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+              {[
+                {
+                  title: "Tokyo Disneyland & DisneySea",
+                  location: "Tokyo, Japan",
+                  price: 59,
+                  rating: "4.9",
+                  reviews: "28k+",
+                  image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAO0PQYh2Nu05evh3TNIYEW2aVaufRIM0LE0N8H1KpgoAtAaX8OgesbBdXDZYz6hJPrLv0XvI8h4VySFVCKyPuqhBpcNnL_CfEboa_FjbfMc0T5aCZJ4fjS-suvQPJZiAuWmtTnLj1Ef6VzPlbAOlAT-TS93DSjRjEn3Tzw2-uCAyLTYQdkQt7WtdzCY50tr09pGnFW_PPw8Tv6LRO5D5Pi3VBD4oehExv3PN4PVWscUcPDIveNAzi48LihlRxeYSRiyIa90wm14w",
+                },
+                {
+                  title: "Gardens by the Bay Skip-the-Line",
+                  location: "Singapore",
+                  price: 24,
+                  rating: "4.8",
+                  reviews: "42k+",
+                  image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCZk_hEbHaDd9hzMeAvKZFBYDq8pwMVI2eEI-jxf55NMVypigqJIvaU0vsAbJnHa1pk1mg56QvzOIf8rBIEO5VwPcALlO_hka11uaCVnfngXjQCBXlubpD4Q-MRPSzGDRjRL-ee7nkfhLyT_W4Bug8bdCWGUJG8ZRGefDa7FoFakDMQxAT6Z2RLU5p-9XxLfLVdyC-sTqyVq9SfDfScs-mEdYNSoyisHB9dxwHB2VEUkiLQdl0jpt_nuPv9vKYwMOSDB362kbGObA",
+                },
+                {
+                  title: "Eiffel Tower Skip-the-Line Entry",
+                  location: "Paris, France",
+                  price: 36,
+                  rating: "4.7",
+                  reviews: "15k+",
+                  image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDzQ43ledBc6wInXQ32JzONbJXBgWLgagpCZiWxJXswbn6TpWnNdUirAsDQAkpLqYRpqUHq7E0xs-wAWwnJw92B0BURJ2aqpRRqcN8iZWDZXurB_VphJHuzpEWA991NDfAIiLlYjqWkz-T4gBgRrQzV9kr6uiQd2ubvp5qltk6CfrCiyUVENvur1Jt9D5U6_LbzwTSYS12UgQz2eEJrpJXRIyQD9hnXQ1QOLgPCtXjr_YNThhi4uSGYdd5BMkCN0l15dMGnOItciQ",
+                },
+                {
+                  title: "Burj Khalifa Observation Deck",
+                  location: "Dubai, UAE",
+                  price: 45,
+                  rating: "4.8",
+                  reviews: "34k+",
+                  image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDLvqqiOSSccRkLSBnr0ubyvyogvnNxpFDXvKFKrxNiZ4gsTTAd3Qxalb_7HNyYMTf4OjbHfPMQD-k6rqAesFUx--sERu-oh37NUq9s4qt8Dlo_FfTas3yyrLk3QWgeIHKt4cO2LbVqC_Qj7rlQrkGu9SrMVZ8MQnxJf6G8afFuiKUCxGsS33sMFtpdhF-3uEnLpgW3pc_X8Js3o_o40AGY4Ue_uZy87fQD4cq1vdQ9abeeDumBnNz45RC2lt6TxNPGcdgxPMe6sg",
+                },
+              ].map((activity, idx) => {
+                // Dynamically route deep link to the exact activity query on Klook via Travelpayouts
+                const klookTarget = encodeURIComponent(`https://www.klook.com/en-US/search?query=${encodeURIComponent(activity.title)}`);
+                const affiliateLink = `https://tp.media/r?marker=734132&trs=534470&p=4110&campaign_id=137&u=${klookTarget}`;
+
+                return (
+                  <a 
+                    key={idx} 
+                    href={affiliateLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-surface-container-lowest dark:bg-surface-container rounded-xl overflow-hidden shadow-lg hover:shadow-primary/10 transition-all border border-outline-variant/20 group flex flex-col h-full"
+                  >
+                    <div className="relative h-48 w-full overflow-hidden">
+                      <Image 
+                        alt={activity.title} 
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                        src={activity.image} 
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                      />
+                      <div className="absolute top-2 left-2 bg-secondary text-white font-label-bold text-[10px] px-2 py-0.5 rounded shadow">
+                        ★ {activity.rating} ({activity.reviews})
+                      </div>
+                    </div>
+                    <div className="p-stack-md flex flex-col justify-between flex-grow">
+                      <div>
+                        <div className="text-on-surface-variant text-[10px] uppercase font-bold tracking-wider mb-1">{activity.location}</div>
+                        <h3 className="font-title-lg text-title-md text-on-surface dark:text-white mb-stack-sm leading-snug group-hover:text-primary transition-colors">
+                          {activity.title}
+                        </h3>
+                      </div>
+                      <div className="flex justify-between items-center mt-4 pt-3 border-t border-outline-variant/10">
+                        <div className="text-xs text-outline">from <span className="font-headline-sm text-secondary text-base">{mounted ? formatPrice(activity.price) : `$${activity.price}`}</span></div>
+                        <span className="bg-primary/10 text-primary font-bold text-xs px-3 py-1.5 rounded-lg group-hover:bg-primary group-hover:text-on-primary transition-all flex items-center gap-0.5">
+                          Book Now
+                          <span className="material-symbols-outlined text-[12px]">open_in_new</span>
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -234,7 +339,7 @@ export default function Home() {
             <h2 className="font-headline-md text-headline-md text-on-surface dark:text-white mb-stack-md">Trending Destinations</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
               <div className="h-64 md:h-auto md:col-span-2 md:row-span-2 relative rounded-2xl overflow-hidden group cursor-pointer shadow-lg">
-                <Image alt="Paris, France" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzQ43ledBc6wInXQ32JzONbJXBgWLgagpCZiWxJXswbn6TpWnNdUirAsDQAkpLqYRpqUHq7E0xs-wAWwnJw92B0BURJ2aqpRRqcN8iZWDZXurB_VphJHuzpEWA991NDfAIiLlYjqWkz-T4gBgRrQzV9kr6uiQd2ubvp5qltk6CfrCiyUVENvur1Jt9D5U6_LbzwTSYS12UgQz2eEJrpJXRIyQD9hnXQ1QOLgPCtXjr_YNThhi4uSGYdd5BMkCN0l15dMGnOItciQ" fill />
+                <Image alt="Paris, France" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzQ43ledBc6wInXQ32JzONbJXBgWLgagpCZiWxJXswbn6TpWnNdUirAsDQAkpLqYRpqUHq7E0xs-wAWwnJw92B0BURJ2aqpRRqcN8iZWDZXurB_VphJHuzpEWA991NDfAIiLlYjqWkz-T4gBgRrQzV9kr6uiQd2ubvp5qltk6CfrCiyUVENvur1Jt9D5U6_LbzwTSYS12UgQz2eEJrpJXRIyQD9hnXQ1QOLgPCtXjr_YNThhi4uSGYdd5BMkCN0l15dMGnOItciQ" fill sizes="(max-width: 768px) 100vw, 50vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6 text-white">
                   <h3 className="font-headline-md text-headline-md">Paris, France</h3>
@@ -242,7 +347,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="h-64 md:h-auto md:col-span-2 md:row-span-1 relative rounded-2xl overflow-hidden group cursor-pointer shadow-lg">
-                <Image alt="Bali, Indonesia" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ8NftmweEOGmVksURWdeNBy5u4lX8WxoWeNLfpBdkmSdflTWPHj3La0FozDtsDoUqf9AjSbxDX9-kcaMt6GNL5NOmX2pyTTmUS_L69JHRDpCe2EAbWJa2WuChU8qmT91HaXnodS0UaGT1z1we0J6RJIJfiYV2CFdtB2GyEMru_0z69BJnAJry8R9VnmkiSgAot-N3klB9frt1jL3r8kRk2cOxIHGVlBPi1fqymOUiME5Uprdvr3G3dpbb7NisIFzt4coRaeQbgQ" fill />
+                <Image alt="Bali, Indonesia" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ8NftmweEOGmVksURWdeNBy5u4lX8WxoWeNLfpBdkmSdflTWPHj3La0FozDtsDoUqf9AjSbxDX9-kcaMt6GNL5NOmX2pyTTmUS_L69JHRDpCe2EAbWJa2WuChU8qmT91HaXnodS0UaGT1z1we0J6RJIJfiYV2CFdtB2GyEMru_0z69BJnAJry8R9VnmkiSgAot-N3klB9frt1jL3r8kRk2cOxIHGVlBPi1fqymOUiME5Uprdvr3G3dpbb7NisIFzt4coRaeQbgQ" fill sizes="(max-width: 768px) 100vw, 50vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6 text-white">
                   <h3 className="font-title-lg text-title-lg">Bali, Indonesia</h3>
@@ -250,7 +355,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="h-48 md:h-auto md:col-span-1 md:row-span-1 relative rounded-2xl overflow-hidden group cursor-pointer shadow-lg">
-                <Image alt="Rome, Italy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw6xGyjCfbpXCblSYq7hUwRZVmHFFufM7Tal36kxMjkuKwEymGKb9LW7U15SgRvKh8ozy9Dy4fFubHw9lkgNpZc35MjDQOazHIjo2splltCOOKHKNj3ZI0krdZu7R3T5oNXpbaQgMT_5uJNfkQWmaFDZy3lmJRwN9kRLnkju9t76SY8Yqk8nHcjYF-PzB1Wv6fLMToHBZQ8YQATa_yydDGVTMpfmXswf_UTNuEbvlx2syuwef-3GpKWMeVstaUHxyuJIyF138ymw" fill />
+                <Image alt="Rome, Italy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw6xGyjCfbpXCblSYq7hUwRZVmHFFufM7Tal36kxMjkuKwEymGKb9LW7U15SgRvKh8ozy9Dy4fFubHw9lkgNpZc35MjDQOazHIjo2splltCOOKHKNj3ZI0krdZu7R3T5oNXpbaQgMT_5uJNfkQWmaFDZy3lmJRwN9kRLnkju9t76SY8Yqk8nHcjYF-PzB1Wv6fLMToHBZQ8YQATa_yydDGVTMpfmXswf_UTNuEbvlx2syuwef-3GpKWMeVstaUHxyuJIyF138ymw" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent"></div>
                 <div className="absolute bottom-4 left-4 text-white">
                   <h3 className="font-title-lg text-title-lg">Rome, Italy</h3>
@@ -258,7 +363,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="h-48 md:h-auto md:col-span-1 md:row-span-1 relative rounded-2xl overflow-hidden group cursor-pointer shadow-lg">
-                <Image alt="Dubai, UAE" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLvqqiOSSccRkLSBnr0ubyvyogvnNxpFDXvKFKrxNiZ4gsTTAd3Qxalb_7HNyYMTf4OjbHfPMQD-k6rqAesFUx--sERu-oh37NUq9s4qt8Dlo_FfTas3yyrLk3QWgeIHKt4cO2LbVqC_Qj7rlQrkGu9SrMVZ8MQnxJf6G8afFuiKUCxGsS33sMFtpdhF-3uEnLpgW3pc_X8Js3o_o40AGY4Ue_uZy87fQD4cq1vdQ9abeeDumBnNz45RC2lt6TxNPGcdgxPMe6sg" fill />
+                <Image alt="Dubai, UAE" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLvqqiOSSccRkLSBnr0ubyvyogvnNxpFDXvKFKrxNiZ4gsTTAd3Qxalb_7HNyYMTf4OjbHfPMQD-k6rqAesFUx--sERu-oh37NUq9s4qt8Dlo_FfTas3yyrLk3QWgeIHKt4cO2LbVqC_Qj7rlQrkGu9SrMVZ8MQnxJf6G8afFuiKUCxGsS33sMFtpdhF-3uEnLpgW3pc_X8Js3o_o40AGY4Ue_uZy87fQD4cq1vdQ9abeeDumBnNz45RC2lt6TxNPGcdgxPMe6sg" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent"></div>
                 <div className="absolute bottom-4 left-4 text-white">
                   <h3 className="font-title-lg text-title-lg">Dubai, UAE</h3>
