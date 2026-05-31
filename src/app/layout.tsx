@@ -101,7 +101,7 @@ export default function RootLayout({
   (function () {
       var script = document.createElement("script");
       script.async = 1;
-      script.src = 'https://emrldtp.cc/NTM0Mzc1.js?t=534375';
+      script.src = 'https://emrldtp.cc/NTM0NDcw.js?t=534470';
       document.head.appendChild(script);
   })();`
           }}
