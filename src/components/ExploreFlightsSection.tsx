@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useCallback, useRef } from "react";
-import { skyscannerApi } from "@/lib/api";
 import { useCurrency } from "@/contexts/CurrencyContext";
 
 // ─── Types for the Skyscanner response ───────────────────────
@@ -153,8 +152,8 @@ export function ExploreFlightsSection() {
     const originCode = selectedOrigin.code;
     const destCode = deal.destinationCode || "PAR";
     
-    // Construct direct search URL that lands precisely on Google Flights details
-    const redirectUrl = `https://www.google.com/travel/flights?q=Flights%20to%20${destCode}%20from%20${originCode}%20on%20${deal.departDate}%20through%20${deal.returnDate}`;
+    // Construct direct search URL that lands precisely on Jetradar with Travelpayouts marker
+    const redirectUrl = `https://www.jetradar.com/search/?marker=734132&origin=${originCode}&destination=${destCode}&depart_date=${deal.departDate}&return_date=${deal.returnDate}&adults=1&one_way=false`;
     window.open(redirectUrl, "_blank");
   };
 
@@ -164,7 +163,7 @@ export function ExploreFlightsSection() {
 
     const cacheKey = `${selectedOrigin.skyId}-${selectedCountry.currency}`;
 
-    // Return cached results if available and not a forced refresh to minimize API load
+    // Return cached results if available and not a forced refresh to minimize processing
     if (!forceRefresh && cacheRef.current[cacheKey]) {
       setDeals(cacheRef.current[cacheKey]);
       setLoading(false);
@@ -172,142 +171,6 @@ export function ExploreFlightsSection() {
     }
 
     try {
-      const currencyMap: Record<string, string> = {
-        USD: "USD", INR: "INR", EUR: "EUR", GBP: "GBP",
-        AUD: "AUD", CAD: "CAD", SGD: "SGD", AED: "AED",
-      };
-
-      const response = await skyscannerApi.searchFlightsEverywhere({
-        originSkyId: selectedOrigin.skyId,
-        originEntityId: selectedOrigin.entityId,
-        currency: currencyMap[selectedCountry.currency] || "USD",
-      });
-
-      // Parse response
-      const rawData = response?.data?.data || response?.data || response;
-      let parsedDeals: FlightDeal[] = [];
-
-      // 1. Match the Sky-Scrapper flightEverywhere "results" format
-      if (rawData?.results && Array.isArray(rawData.results)) {
-        parsedDeals = rawData.results
-          .map((item: any, idx: number) => {
-            const content = item?.content;
-            const location = content?.location;
-            const cheapest = content?.flightQuotes?.cheapest;
-            const dates = generateFlightDates(14 + idx, 7);
-            
-            // Map country codes to hub airports for precision redirection
-            const rawSkyCode = location?.skyCode || "PAR";
-            const resolvedHub = COUNTRY_TO_HUB[rawSkyCode] || rawSkyCode;
-            
-            return {
-              id: item.id || location?.id || `deal-${idx}`,
-              destinationName: location?.name || "Unknown",
-              destinationCode: resolvedHub,
-              country: location?.type === "Nation" ? location.name : (location?.continent?.name || ""),
-              price: cheapest?.rawPrice || 0,
-              formattedPrice: cheapest?.price || "",
-              direct: cheapest?.direct ?? false,
-              imageUrl: content?.image?.url || "",
-              departDate: dates.departYMD,
-              returnDate: dates.returnYMD,
-            };
-          })
-          .filter((deal: FlightDeal) => deal.price > 0)
-          .slice(0, 12);
-      } 
-      // 2. Fallback everywhereDestination format
-      else if (rawData?.everywhereDestination) {
-        parsedDeals = rawData.everywhereDestination
-          .filter((dest: any) => dest?.flightQuotes?.length > 0)
-          .map((dest: any, idx: number) => {
-            const cheapest = dest.flightQuotes.reduce((min: any, q: any) =>
-              (q.rawPrice || q.price) < (min.rawPrice || min.price) ? q : min,
-              dest.flightQuotes[0]
-            );
-            const dates = generateFlightDates(14 + idx, 7);
-            const rawSkyCode = dest.skyCode || "PAR";
-            const resolvedHub = COUNTRY_TO_HUB[rawSkyCode] || rawSkyCode;
-
-            return {
-              id: dest.id || dest.name,
-              destinationName: dest.name || "Unknown",
-              destinationCode: resolvedHub,
-              country: dest.country || "",
-              price: cheapest.rawPrice || cheapest.price || 0,
-              formattedPrice: cheapest.price ? `${cheapest.price}` : "",
-              direct: cheapest.direct || false,
-              imageUrl: "",
-              departDate: dates.departYMD,
-              returnDate: dates.returnYMD,
-            };
-          })
-          .sort((a: FlightDeal, b: FlightDeal) => a.price - b.price)
-          .slice(0, 12);
-      } 
-      // 3. Fallback alternative flat array format
-      else if (Array.isArray(rawData)) {
-        parsedDeals = rawData
-          .filter((item: any) => item?.price || item?.cost)
-          .map((item: any, idx: number) => {
-            const dates = generateFlightDates(14 + idx, 7);
-            const rawSkyCode = item.destinationCode || "PAR";
-            const resolvedHub = COUNTRY_TO_HUB[rawSkyCode] || rawSkyCode;
-
-            return {
-              id: item.id || `deal-${idx}`,
-              destinationName: item.name || item.destination || "Unknown",
-              destinationCode: resolvedHub,
-              country: item.country || "",
-              price: item.price?.raw || item.price || item.cost || 0,
-              formattedPrice: item.price?.formatted || "",
-              direct: item.direct || false,
-              imageUrl: item.imageUrl || "",
-              departDate: dates.departYMD,
-              returnDate: dates.returnYMD,
-            };
-          })
-          .slice(0, 12);
-      }
-
-      // 4. If parsing yielded nothing, extract general arrays
-      if (parsedDeals.length === 0 && rawData) {
-        const allValues = Object.values(rawData);
-        for (const val of allValues) {
-          if (Array.isArray(val) && val.length > 0) {
-            parsedDeals = val
-              .slice(0, 12)
-              .map((item: any, idx: number) => {
-                const dates = generateFlightDates(14 + idx, 7);
-                return {
-                  id: item.id || `deal-${idx}`,
-                  destinationName: item.name || item.city || item.destination || item.destinationName || "Unknown",
-                  destinationCode: item.destinationCode || "PAR",
-                  country: item.country || item.countryName || "",
-                  price: item.rawPrice || item.price?.raw || item.price || item.cost || 0,
-                  formattedPrice: item.price?.formatted || "",
-                  direct: item.direct ?? false,
-                  imageUrl: item.imageUrl || "",
-                  departDate: dates.departYMD,
-                  returnDate: dates.returnYMD,
-                };
-              });
-            break;
-          }
-        }
-      }
-
-      // If API returned completely empty deals, trigger premium fallback deals immediately
-      if (parsedDeals.length === 0) {
-        throw new Error("Empty API response. Generating localized fallback deals.");
-      }
-
-      // Store in session cache
-      cacheRef.current[cacheKey] = parsedDeals;
-      setDeals(parsedDeals);
-    } catch (err: any) {
-      console.warn("Skyscanner API returned no active quotes or failed. Loading premium fallback deals:", err.message);
-      
       // Load fallback deals instantly according to currency rate
       const conversionRates: Record<string, number> = {
         USD: 1.0, INR: 83.0, EUR: 0.92, GBP: 0.79,
@@ -328,9 +191,13 @@ export function ExploreFlightsSection() {
         };
       });
 
-      // Cache the fallback deals so we don't spam failed API attempts
+      // Small artificial timeout to simulate a premium smart-search experience (e.g. 500ms)
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
       cacheRef.current[cacheKey] = convertedFallbackDeals;
       setDeals(convertedFallbackDeals);
+    } catch (err: any) {
+      setError("Failed to load flight deals");
     } finally {
       setLoading(false);
     }
@@ -362,9 +229,9 @@ export function ExploreFlightsSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-start md:justify-between items-start md:items-end mb-stack-md gap-2 md:gap-0">
           <div>
-            <span className="inline-block bg-secondary text-white font-label-bold text-[10px] uppercase px-2 py-0.5 rounded-full mb-2">Live Prices</span>
+            <span className="inline-block bg-secondary text-white font-label-bold text-[10px] uppercase px-2 py-0.5 rounded-full mb-2">Affiliate Deals</span>
             <h2 className="font-headline-md text-headline-md text-on-surface dark:text-white">Explore Cheap Flights</h2>
-            <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Real-time prices from Skyscanner — click cards to view live deals</p>
+            <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Compare best flight rates from Jetradar — click cards to book instantly</p>
           </div>
           <button
             onClick={() => fetchDeals(true)}
