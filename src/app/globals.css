@@ -1,0 +1,310 @@
+@import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  
+  --color-secondary: var(--secondary);
+  --color-on-secondary: var(--on-secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+  
+  --color-tertiary-fixed: var(--tertiary-fixed);
+  --color-on-tertiary-fixed: var(--on-tertiary-fixed);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-tertiary-container: var(--on-tertiary-container);
+  
+  --color-error: var(--error);
+  --color-on-error: var(--on-error);
+  --color-error-container: var(--error-container);
+  --color-on-error-container: var(--on-error-container);
+  
+  --color-background: var(--background);
+  --color-on-background: var(--on-background);
+  
+  --color-surface: var(--surface);
+  --color-on-surface: var(--on-surface);
+  --color-surface-variant: var(--surface-variant);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  
+  --font-headline-sm: "metropolis", sans-serif;
+  --font-headline-md-mobile: "metropolis", sans-serif;
+  --font-headline-md: "metropolis", sans-serif;
+  --font-label-bold: var(--font-inter), sans-serif;
+  --font-body-sm: var(--font-inter), sans-serif;
+  --font-title-lg: var(--font-inter), sans-serif;
+  --font-display-lg: "metropolis", sans-serif;
+  --font-body-lg: var(--font-inter), sans-serif;
+
+  --spacing-stack-lg: 32px;
+  --spacing-stack-sm: 8px;
+  --spacing-stack-md: 16px;
+  --spacing-unit: 4px;
+  --spacing-container-max: 1280px;
+  --spacing-margin-mobile: 16px;
+  --spacing-gutter: 24px;
+
+  --text-headline-sm: 24px;
+  --text-headline-sm--line-height: 32px;
+  --text-headline-sm--font-weight: 600;
+
+  --text-headline-md-mobile: 28px;
+  --text-headline-md-mobile--line-height: 36px;
+  --text-headline-md-mobile--font-weight: 600;
+
+  --text-headline-md: 32px;
+  --text-headline-md--line-height: 40px;
+  --text-headline-md--letter-spacing: -0.01em;
+  --text-headline-md--font-weight: 600;
+
+  --text-label-bold: 12px;
+  --text-label-bold--line-height: 16px;
+  --text-label-bold--font-weight: 700;
+
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 20px;
+  --text-body-sm--font-weight: 400;
+
+  --text-title-lg: 20px;
+  --text-title-lg--line-height: 28px;
+  --text-title-lg--font-weight: 600;
+
+  --text-display-lg: 48px;
+  --text-display-lg--line-height: 56px;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight: 700;
+
+  --text-body-lg: 16px;
+  --text-body-lg--line-height: 24px;
+  --text-body-lg--font-weight: 400;
+}
+
+@layer base {
+  :root {
+    /* Light Theme */
+    --primary: #000666;
+    --on-primary: #ffffff;
+    --primary-container: #1a237e;
+    --on-primary-container: #8690ee;
+    
+    --secondary: #006875;
+    --on-secondary: #ffffff;
+    --secondary-container: #00e3fd;
+    --on-secondary-container: #00616d;
+    
+    --tertiary-fixed: #ffe170;
+    --on-tertiary-fixed: #221b00;
+    --tertiary-container: #c9a800;
+    --on-tertiary-container: #4c3e00;
+
+    --error: #ba1a1a;
+    --on-error: #ffffff;
+    --error-container: #ffdad6;
+    --on-error-container: #93000a;
+    
+    --background: #f8f9fb;
+    --on-background: #191c1e;
+    
+    --surface: #f8f9fb;
+    --on-surface: #191c1e;
+    --surface-variant: #e0e3e5;
+    --on-surface-variant: #454652;
+    --outline: #767683;
+    --outline-variant: #c6c5d4;
+
+    --surface-container-highest: #e0e3e5;
+    --surface-container-high: #e6e8ea;
+    --surface-container: #eceef0;
+    --surface-container-low: #f2f4f6;
+    --surface-container-lowest: #ffffff;
+  }
+
+  .dark {
+    /* Dark Theme */
+    --primary: #38bdf8;
+    --on-primary: #ffffff;
+    --primary-container: #1e293b;
+    --on-primary-container: #bdc2ff;
+    
+    --secondary: #00daf3;
+    --on-secondary: #001f24;
+    --secondary-container: #004f58;
+    --on-secondary-container: #9cf0ff;
+    
+    --tertiary-fixed: #ffe170;
+    --on-tertiary-fixed: #221b00;
+    --tertiary-container: #c9a800;
+    --on-tertiary-container: #4c3e00;
+
+    --error: #f87171;
+    --on-error: #ffffff;
+    --error-container: #93000a;
+    --on-error-container: #ffdad6;
+
+    --background: #020617;
+    --on-background: #f8f9fb;
+    
+    --surface: #0f172a;
+    --on-surface: #f8f9fb;
+    --surface-variant: #1e293b;
+    --on-surface-variant: #94a3b8;
+    --outline: #475569;
+    --outline-variant: #334155;
+
+    --surface-container-highest: #334155;
+    --surface-container-high: #1e293b;
+    --surface-container: #1e293b;
+    --surface-container-low: #111827;
+    --surface-container-lowest: #020617;
+  }
+}
+
+@layer utilities {
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .dark .glassmorphism {
+    background: rgba(25, 28, 30, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  @keyframes sparkle {
+    0%, 100% { filter: brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0)); }
+    50% { filter: brightness(1.3) drop-shadow(0 0 10px rgba(255,255,255,0.8)); }
+  }
+  .animate-sparkle {
+    animation: sparkle 2s ease-in-out infinite;
+  }
+  
+  .glass-panel {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+  }
+  .dark .glass-panel {
+      background: rgba(25, 28, 30, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .ai-gradient-bg {
+      background: linear-gradient(135deg, #000666 0%, #006875 100%);
+  }
+  .pulse-ring {
+      box-shadow: 0 0 0 0 rgba(0, 227, 253, 0.7);
+      animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 227, 253, 0.4); }
+      70% { box-shadow: 0 0 0 15px rgba(0, 227, 253, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 227, 253, 0); }
+  }
+  .shimmer {
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+  }
+  @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  @keyframes flight-takeoff {
+    0% { transform: translate(0, 0) scale(1.1); opacity: 1; }
+    30% { transform: translate(5px, -5px) scale(1.1); opacity: 0; }
+    31% { transform: translate(-5px, 5px) scale(1.1); opacity: 0; }
+    100% { transform: translate(0, 0) scale(1.1); opacity: 1; }
+  }
+  .animate-flight-takeoff {
+    animation: flight-takeoff 2s ease-in-out infinite;
+  }
+  
+  @keyframes hotel-pop {
+    0%, 100% { transform: scale(1.1); }
+    50% { transform: scale(1.25) translateY(-2px); }
+  }
+  .animate-hotel-pop {
+    animation: hotel-pop 2s ease-in-out infinite;
+  }
+
+  @keyframes vehicle-move {
+    0%, 100% { transform: translateX(0) scale(1.1); }
+    50% { transform: translateX(3px) scale(1.1); }
+  }
+  .animate-vehicle-move {
+    animation: vehicle-move 2s ease-in-out infinite;
+  }
+  
+  @keyframes package-swing {
+    0%, 100% { transform: rotate(0deg) scale(1.1); }
+    25% { transform: rotate(5deg) scale(1.1); }
+    75% { transform: rotate(-5deg) scale(1.1); }
+  }
+  .animate-package-swing {
+    animation: package-swing 2s ease-in-out infinite;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.2s ease-out;
+  }
+
+  /* ========== Hotel Hero (Luminous Stay) ========== */
+  .hotel-hero-glass-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  }
+
+  .hotel-hero-btn-premium {
+    background: linear-gradient(135deg, #F15A24 0%, #D84E1D 100%);
+    box-shadow: 0 4px 15px rgba(241, 90, 36, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .hotel-hero-btn-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(241, 90, 36, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  }
+  .hotel-hero-btn-premium:active {
+    transform: translateY(1px);
+  }
+
+  .hotel-hero-water-bg {
+    background: linear-gradient(-45deg, #2196F3, #42A5F5, #64B5F6, #1E88E5);
+    background-size: 400% 400%;
+    animation: hotel-hero-gradient 15s ease infinite;
+  }
+
+  @keyframes hotel-hero-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
