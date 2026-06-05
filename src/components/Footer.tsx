@@ -42,7 +42,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-surface-container-high dark:bg-on-background w-full transition-colors duration-300">
+    <footer className="bg-surface-container-low dark:bg-[#0b1121] w-full transition-colors duration-300 border-t border-outline-variant/15 dark:border-white/5">
       {/* Trust Bar — Partner Logos */}
       <div className="border-b border-outline-variant/15 dark:border-white/5 py-8">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
@@ -53,7 +53,7 @@ export function Footer() {
             {partnerLogos.map((name) => (
               <span
                 key={name}
-                className="text-[13px] font-label-bold text-outline-variant dark:text-white/20 hover:text-primary dark:hover:text-white/60 transition-colors duration-200 cursor-default"
+                className="text-[13px] font-label-bold text-outline-variant dark:text-white/40 hover:text-primary dark:hover:text-white transition-colors duration-200 cursor-default"
               >
                 {name}
               </span>
@@ -75,7 +75,7 @@ export function Footer() {
                 GlobeTrek
               </span>
             </Link>
-            <p className="font-body-sm text-body-sm text-on-surface-variant dark:text-white/50 leading-relaxed mb-5 max-w-[280px]">
+            <p className="font-body-sm text-body-sm text-on-surface-variant dark:text-white/70 leading-relaxed mb-5 max-w-[280px]">
               The world&apos;s smartest travel meta-search engine. We compare 100+ sites to find you the absolute lowest prices.
             </p>
 
@@ -106,7 +106,7 @@ export function Footer() {
               {["X (Twitter)", "Instagram", "Facebook", "YouTube"].map((platform) => (
                 <div
                   key={platform}
-                  className="w-9 h-9 rounded-full bg-surface-container dark:bg-white/5 border border-outline-variant/15 dark:border-white/10 flex items-center justify-center cursor-pointer hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 text-on-surface-variant dark:text-white/40"
+                  className="w-9 h-9 rounded-full bg-surface-container dark:bg-white/5 border border-outline-variant/15 dark:border-white/10 flex items-center justify-center cursor-pointer hover:bg-primary hover:text-white hover:border-primary dark:hover:bg-white/20 dark:hover:border-white/30 dark:hover:text-white transition-all duration-200 text-on-surface-variant dark:text-white/70"
                   title={platform}
                 >
                   <span className="material-symbols-outlined text-[16px]">
@@ -129,8 +129,9 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="font-body-sm text-[13px] text-on-surface-variant dark:text-white/45 hover:text-primary dark:hover:text-white transition-colors duration-200"
+                    className="font-body-sm text-[13px] text-on-surface-variant dark:text-white/60 hover:text-primary dark:hover:text-white transition-colors duration-200 flex items-center gap-2 group"
                   >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/0 dark:bg-white/0 group-hover:bg-primary dark:group-hover:bg-white transition-colors duration-200" />
                     {link.label}
                   </Link>
                 </li>
@@ -148,8 +149,9 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="font-body-sm text-[13px] text-on-surface-variant dark:text-white/45 hover:text-primary dark:hover:text-white transition-colors duration-200"
+                    className="font-body-sm text-[13px] text-on-surface-variant dark:text-white/60 hover:text-primary dark:hover:text-white transition-colors duration-200 flex items-center gap-2 group"
                   >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/0 dark:bg-white/0 group-hover:bg-primary dark:group-hover:bg-white transition-colors duration-200" />
                     {link.label}
                   </Link>
                 </li>
@@ -167,8 +169,9 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="font-body-sm text-[13px] text-on-surface-variant dark:text-white/45 hover:text-primary dark:hover:text-white transition-colors duration-200"
+                    className="font-body-sm text-[13px] text-on-surface-variant dark:text-white/60 hover:text-primary dark:hover:text-white transition-colors duration-200 flex items-center gap-2 group"
                   >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/0 dark:bg-white/0 group-hover:bg-primary dark:group-hover:bg-white transition-colors duration-200" />
                     {link.label}
                   </Link>
                 </li>
@@ -186,8 +189,9 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="font-body-sm text-[13px] text-on-surface-variant dark:text-white/45 hover:text-primary dark:hover:text-white transition-colors duration-200"
+                    className="font-body-sm text-[13px] text-on-surface-variant dark:text-white/60 hover:text-primary dark:hover:text-white transition-colors duration-200 flex items-center gap-2 group"
                   >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/0 dark:bg-white/0 group-hover:bg-primary dark:group-hover:bg-white transition-colors duration-200" />
                     {link.label}
                   </Link>
                 </li>

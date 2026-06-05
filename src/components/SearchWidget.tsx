@@ -36,10 +36,6 @@ const tabs: TabDef[] = [
     icon: <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-9h10v2H7z" />,
   },
   {
-    id: "trains", label: "Trains",
-    icon: <path d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h12v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-4-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-6H6V6h5v5zm5.5 6c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm2.5-6h-5V6h5v5z" />,
-  },
-  {
     id: "buses", label: "Buses",
     icon: <path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 6c0-1.08 2.26-2 7-2s7 .92 7 2v5H5V6z" />,
   },
@@ -51,33 +47,9 @@ const tabs: TabDef[] = [
     id: "tours", label: "Tours &\nAttractions",
     icon: <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />,
   },
-  {
-    id: "visa", label: "Visa",
-    icon: <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zm-3-5h1.5v2H17v-2zm-2.5 0H16v2h-1.5v-2zm-2.5 0H13v2h-1.5v-2zm-2.5 0H10v2H7.5v-2z" />,
-  },
-  {
-    id: "cruise", label: "Cruise", badge: "new",
-    icon: <path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.65 2.62.99 4 .99h2v-2h-2zM3.95 19H4c1.6 0 3.11-.55 4.36-1.45L20 14V6c-1.25.18-2.43.51-3.5 1V3l-3.5 1v1h-2V3L7.5 4v1H5.5c-.88 0-1.74.07-2.57.19C2.4 5.33 2 5.86 2 6.47V15c0 1.34.41 2.58 1.1 3.63.22.34.5.64.85.37z" />,
-  },
-  {
-    id: "forex", label: "Forex Card\n& Currency",
-    icon: <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" />,
-  },
-  {
-    id: "insurance", label: "Travel\nInsurance",
-    icon: <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-4-4 1.41-1.41L11 12.17l4.59-4.59L17 9l-6 6z" />,
-  },
 ];
 
-/* ───────── Special fare chips ───────── */
-const specialFares = [
-  { id: "regular", label: "Regular", desc: "Regular fares", active: true },
-  { id: "student", label: "Student", desc: "Extra discounts/baggage" },
-  { id: "armed", label: "Armed Forces", desc: "Up to ₹ 600 off" },
-  { id: "gst", label: "Have a GST number ?", desc: "Upto 10% Extra Savings !", badge: "new" },
-  { id: "senior", label: "Senior Citizen", desc: "Up to ₹ 600 off" },
-  { id: "doctor", label: "Doctor and Nurses", desc: "Up to ₹ 600 off" },
-];
+
 
 /* ───────── Component ───────── */
 export function SearchWidget() {
@@ -91,6 +63,12 @@ export function SearchWidget() {
   const [showToDropdown, setShowToDropdown] = useState(false);
   const [fromSearchQuery, setFromSearchQuery] = useState("");
   const [toSearchQuery, setToSearchQuery] = useState("");
+
+  const [fromActiveIndex, setFromActiveIndex] = useState(0);
+  const [toActiveIndex, setToActiveIndex] = useState(0);
+
+  const fromInputRef = useRef<HTMLInputElement>(null);
+  const toInputRef = useRef<HTMLInputElement>(null);
 
   /* Date state */
   const [date, setDate] = useState("");
@@ -107,8 +85,7 @@ export function SearchWidget() {
   /* Trip type */
   const [tripType, setTripType] = useState("oneway");
 
-  /* Special fare */
-  const [activeFare, setActiveFare] = useState("regular");
+
 
   /* Price drop */
   const [priceDropChecked, setPriceDropChecked] = useState(false);
@@ -121,6 +98,8 @@ export function SearchWidget() {
   const fromRef = useRef<HTMLDivElement>(null);
   const toRef = useRef<HTMLDivElement>(null);
   const travellerRef = useRef<HTMLDivElement>(null);
+  const departureDateRef = useRef<HTMLInputElement>(null);
+  const returnDateRef = useRef<HTMLInputElement>(null);
 
   /* Load location data */
   useEffect(() => {
@@ -160,7 +139,7 @@ export function SearchWidget() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  /* Derived */
+  /* Derived variables */
   const isHotel = activeTab === 'hotels' || activeTab === 'villas' || activeTab === 'packages';
   const showFromInput = !isHotel;
   const currentDataset = activeTab === "flights" || activeTab === "trains" ? globalAirports : globalCities;
@@ -173,6 +152,135 @@ export function SearchWidget() {
     ? currentDataset.filter(loc => loc.searchString?.includes(toSearchQuery.toLowerCase())).slice(0, 20)
     : currentDataset.slice(0, 20);
 
+  /* Auto-scroll active dropdown item into view */
+  useEffect(() => {
+    if (showFromDropdown) {
+      const activeEl = document.querySelector('.from-dropdown-list .active-item');
+      if (typeof activeEl?.scrollIntoView === 'function') {
+        activeEl.scrollIntoView({ block: 'nearest' });
+      }
+    }
+  }, [fromActiveIndex, showFromDropdown]);
+
+  useEffect(() => {
+    if (showToDropdown) {
+      const activeEl = document.querySelector('.to-dropdown-list .active-item');
+      if (typeof activeEl?.scrollIntoView === 'function') {
+        activeEl.scrollIntoView({ block: 'nearest' });
+      }
+    }
+  }, [toActiveIndex, showToDropdown]);
+
+  /* Reset active highlight when query changes */
+  useEffect(() => {
+    setFromActiveIndex(0);
+  }, [fromSearchQuery]);
+
+  useEffect(() => {
+    setToActiveIndex(0);
+  }, [toSearchQuery]);
+
+  /* Auto-focus dropdown inputs when opened */
+  useEffect(() => {
+    if (showFromDropdown) {
+      setTimeout(() => {
+        fromInputRef.current?.focus();
+        setFromActiveIndex(0);
+      }, 50);
+    }
+  }, [showFromDropdown]);
+
+  useEffect(() => {
+    if (showToDropdown) {
+      setTimeout(() => {
+        toInputRef.current?.focus();
+        setToActiveIndex(0);
+      }, 50);
+    }
+  }, [showToDropdown]);
+
+  /* Keyboard handlers */
+  const handleFromKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setFromActiveIndex((prev) => Math.min(filteredFromLocations.length - 1, prev + 1));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setFromActiveIndex((prev) => Math.max(0, prev - 1));
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      const selected = filteredFromLocations[fromActiveIndex];
+      if (selected) {
+        setFromObj(selected);
+        setShowFromDropdown(false);
+        // Advance to To selection
+        setShowToDropdown(true);
+        setToSearchQuery("");
+      }
+    } else if (e.key === "Escape") {
+      setShowFromDropdown(false);
+    }
+  };
+
+  const handleToKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setToActiveIndex((prev) => Math.min(filteredToLocations.length - 1, prev + 1));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setToActiveIndex((prev) => Math.max(0, prev - 1));
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      const selected = filteredToLocations[toActiveIndex];
+      if (selected) {
+        setToObj(selected);
+        setShowToDropdown(false);
+        // Advance to Departure date picker
+        setTimeout(() => {
+          if (departureDateRef.current) {
+            departureDateRef.current.focus();
+            if (typeof departureDateRef.current.showPicker === 'function') {
+              try {
+                departureDateRef.current.showPicker();
+              } catch (err) {}
+            }
+          }
+        }, 100);
+      }
+    } else if (e.key === "Escape") {
+      setShowToDropdown(false);
+    }
+  };
+
+  const handleDepartureDateChange = (val: string) => {
+    setDate(val);
+    if (isHotel || tripType === 'roundtrip') {
+      setTimeout(() => {
+        if (returnDateRef.current) {
+          returnDateRef.current.focus();
+          if (typeof returnDateRef.current.showPicker === 'function') {
+            try {
+              returnDateRef.current.showPicker();
+            } catch (err) {}
+          }
+        }
+      }, 100);
+    } else {
+      // Oneway trip -> Auto-open travellers dropdown
+      setTimeout(() => {
+        setShowTravellerDropdown(true);
+      }, 100);
+    }
+  };
+
+  const handleReturnDateChange = (val: string) => {
+    setCheckoutDate(val);
+    // Auto-open travellers dropdown after picking return date
+    setTimeout(() => {
+      setShowTravellerDropdown(true);
+    }, 100);
+  };
+
   const handleSearch = () => {
     if (activeTab === 'flights' || activeTab === 'cars' || activeTab === 'trains') {
       if (!fromObj || !toObj || !date) { alert("Please fill all fields (From, To, Date)"); return; }
@@ -181,7 +289,24 @@ export function SearchWidget() {
     }
     const fromVal = fromObj ? fromObj.code || fromObj.title : "";
     const toVal = toObj ? toObj.code || toObj.title : "";
-    router.push(`/search-results?type=${activeTab}&from=${encodeURIComponent(fromVal)}&to=${encodeURIComponent(toVal)}&date=${date}`);
+    
+    if (activeTab === 'flights') {
+      const q = new URLSearchParams({
+        type: activeTab,
+        from: fromVal,
+        to: toVal,
+        date: date,
+        tripType: tripType,
+        returnDate: tripType === 'roundtrip' ? checkoutDate : '',
+        adults: adults.toString(),
+        children: children.toString(),
+        infants: infants.toString(),
+        class: travelClass
+      });
+      router.push(`/search-results?${q.toString()}`);
+    } else {
+      router.push(`/search-results?type=${activeTab}&from=${encodeURIComponent(fromVal)}&to=${encodeURIComponent(toVal)}&date=${date}`);
+    }
   };
 
   /* ───── Formatted departure display ───── */
@@ -288,218 +413,327 @@ export function SearchWidget() {
         )}
 
         {/* ── Main Inputs Grid ── */}
-        <div className="grid grid-cols-1 md:grid-cols-12 border border-gray-200 rounded-xl overflow-visible relative mb-6 focus-within:border-[#008cff] focus-within:ring-4 focus-within:ring-[#008cff]/10 transition-all duration-300 shadow-sm">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 relative mb-6">
 
-          {/* FROM */}
-          {showFromInput && (
+          {/* FROM & TO CONTAINER */}
+          <div className="col-span-1 md:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4 relative">
+            {/* FROM */}
+            {showFromInput && (
+              <div
+                className={`flex-1 border border-gray-200 rounded-xl p-4 bg-white hover:border-[#008cff]/50 hover:bg-[#008cff]/5 cursor-pointer transition-all duration-300 relative hover:-translate-y-0.5 hover:shadow-md ${showFromDropdown ? 'ring-2 ring-[#008cff] border-[#008cff] shadow-md bg-white z-30' : 'z-10 hover:z-20'}`}
+                onClick={() => { setShowFromDropdown(true); setFromSearchQuery(""); }}
+                ref={fromRef}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#008cff] shrink-0">
+                    <span className="material-symbols-outlined text-[20px]">{activeTab === 'cabs' ? 'local_taxi' : 'flight_takeoff'}</span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">{activeTab === 'cabs' ? 'Pick-up' : 'From'}</div>
+                    {fromObj ? (
+                      <>
+                        <div className="text-lg font-black text-gray-900 truncate leading-tight mt-0.5">{fromObj.title}</div>
+                        <div className="text-xs text-gray-500 truncate leading-none mt-0.5">{fromObj.subtitle}</div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="text-lg font-bold text-gray-400 mt-0.5">Select</div>
+                        <div className="text-xs text-gray-400 leading-none mt-0.5">{activeTab === 'cabs' ? 'Pick-up Location' : 'Departure City'}</div>
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                {/* FROM Dropdown */}
+                {showFromDropdown && (
+                  <div className="absolute top-[100%] left-0 w-[320px] md:w-[350px] z-50 bg-white rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 overflow-hidden mt-2 cursor-default" onClick={e => e.stopPropagation()}>
+                    <div className="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-100 flex items-center gap-2">
+                      <span className="material-symbols-outlined text-gray-400 text-[18px]">search</span>
+                      <input
+                        ref={fromInputRef}
+                        type="text" autoFocus
+                        className="w-full bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-sm outline-none focus:border-[#008cff] focus:ring-2 focus:ring-[#008cff]/20 text-black placeholder-gray-400"
+                        placeholder="Search origin..."
+                        value={fromSearchQuery} 
+                        onChange={e => setFromSearchQuery(e.target.value)}
+                        onKeyDown={handleFromKeyDown}
+                      />
+                    </div>
+                    <ul className="max-h-[250px] overflow-y-auto no-scrollbar from-dropdown-list py-1">
+                      {filteredFromLocations.length === 0 ? <li className="p-4 text-center text-gray-400 text-xs">No locations found</li> : filteredFromLocations.map((loc, idx) => {
+                        const isActive = idx === fromActiveIndex;
+                        return (
+                          <li 
+                            key={idx} 
+                            onMouseEnter={() => setFromActiveIndex(idx)}
+                            onClick={() => { 
+                              setFromObj(loc); 
+                              setShowFromDropdown(false); 
+                              setShowToDropdown(true);
+                              setToSearchQuery("");
+                            }} 
+                            className={`px-4 py-2.5 cursor-pointer border-b border-gray-50 flex items-center transition-colors duration-150 ${
+                              isActive ? 'bg-[#008cff]/10 border-l-4 border-l-[#008cff] pl-3 font-bold active-item' : 'hover:bg-gray-50'
+                            }`}
+                          >
+                            <div className="flex items-center gap-3 overflow-hidden">
+                              <span className={`material-symbols-outlined text-[18px] ${isActive ? 'text-[#008cff]' : 'text-gray-400'}`}>{activeTab === 'cabs' ? 'local_taxi' : 'flight_takeoff'}</span>
+                              <div className="truncate">
+                                <div className={`text-sm truncate ${isActive ? 'text-[#008cff] font-bold' : 'text-gray-900 font-semibold'}`}>{loc.title} {loc.code && <span className="font-normal text-xs text-gray-500 ml-1">{loc.code}</span>}</div>
+                                <div className="text-[11px] text-gray-500 truncate">{loc.subtitle}</div>
+                              </div>
+                            </div>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* SWAP BUTTON */}
+            {showFromInput && (
+              <div className="hidden sm:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                <button
+                  className="w-9 h-9 bg-white border border-gray-250 rounded-full flex items-center justify-center shadow-lg hover:border-[#008cff] hover:text-[#008cff] hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
+                  onClick={(e) => { e.stopPropagation(); const temp = fromObj; setFromObj(toObj); setToObj(temp); }}
+                >
+                  <span className="material-symbols-outlined text-[18px]">sync_alt</span>
+                </button>
+              </div>
+            )}
+
+            {/* TO */}
             <div
-              className={`col-span-1 ${isHotel ? 'md:col-span-3' : 'md:col-span-3'} border-b md:border-b-0 md:border-r border-gray-200 p-4 hover:bg-[#eaf5ff] cursor-pointer transition-colors md:rounded-l-xl relative`}
-              onClick={() => { setShowFromDropdown(true); setFromSearchQuery(""); }}
-              ref={fromRef}
+              className={`flex-1 border border-gray-250 rounded-xl p-4 bg-white hover:border-[#008cff]/50 hover:bg-[#008cff]/5 cursor-pointer transition-all duration-300 relative hover:-translate-y-0.5 hover:shadow-md ${showToDropdown ? 'ring-2 ring-[#008cff] border-[#008cff] shadow-md bg-white z-30' : 'z-10 hover:z-20'}`}
+              onClick={() => { setShowToDropdown(true); setToSearchQuery(""); }}
+              ref={toRef}
             >
-              <div className="text-xs font-bold text-[#9b9b9b] mb-1 uppercase">{activeTab === 'cabs' ? 'Pick-up' : 'From'}</div>
-              {fromObj ? (
-                <>
-                  <div className="text-2xl md:text-3xl font-black text-black truncate">{fromObj.title}</div>
-                  <div className="text-xs text-[#4a4a4a] truncate">{fromObj.subtitle}</div>
-                </>
-              ) : (
-                <>
-                  <div className="text-2xl md:text-3xl font-black text-black">Select</div>
-                  <div className="text-xs text-[#4a4a4a] truncate">{activeTab === 'cabs' ? 'Pick-up Location' : 'Departure City'}</div>
-                </>
-              )}
-              {/* FROM Dropdown */}
-              {showFromDropdown && (
-                <div className="absolute top-[100%] left-0 w-[320px] md:w-[350px] z-50 bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.15)] border border-gray-200 overflow-hidden mt-1 cursor-default" onClick={e => e.stopPropagation()}>
-                  <div className="p-3 bg-[#eaf5ff] border-b border-gray-200">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#008cff] shrink-0">
+                  <span className="material-symbols-outlined text-[20px]">{isHotel ? 'home_pin' : activeTab === 'cabs' ? 'flag' : 'flight_land'}</span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">{isHotel ? 'Destination' : activeTab === 'cabs' ? 'Drop-off' : 'To'}</div>
+                  {toObj ? (
+                    <>
+                      <div className="text-lg font-black text-gray-900 truncate leading-tight mt-0.5">{toObj.title}</div>
+                      <div className="text-xs text-gray-500 truncate leading-none mt-0.5">{toObj.subtitle}</div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="text-lg font-bold text-gray-400 mt-0.5">Select</div>
+                      <div className="text-xs text-gray-400 leading-none mt-0.5">{isHotel ? 'Destination City' : activeTab === 'cabs' ? 'Drop-off Location' : 'Destination'}</div>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              {/* TO Dropdown */}
+              {showToDropdown && (
+                <div className="absolute top-[100%] left-0 w-[320px] md:w-[350px] z-50 bg-white rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 overflow-hidden mt-2 cursor-default" onClick={e => e.stopPropagation()}>
+                  <div className="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-100 flex items-center gap-2">
+                    <span className="material-symbols-outlined text-gray-400 text-[18px]">search</span>
                     <input
+                      ref={toInputRef}
                       type="text" autoFocus
-                      className="w-full bg-white border border-gray-300 rounded px-3 py-2 outline-none focus:border-[#008cff] text-black"
-                      placeholder="From"
-                      value={fromSearchQuery} onChange={e => setFromSearchQuery(e.target.value)}
+                      className="w-full bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-sm outline-none focus:border-[#008cff] focus:ring-2 focus:ring-[#008cff]/20 text-black placeholder-gray-400"
+                      placeholder="Search destination..."
+                      value={toSearchQuery} 
+                      onChange={e => setToSearchQuery(e.target.value)}
+                      onKeyDown={handleToKeyDown}
                     />
                   </div>
-                  <ul className="max-h-[250px] overflow-y-auto no-scrollbar">
-                    {filteredFromLocations.length === 0 ? <li className="p-3 text-center text-gray-500">No results found</li> : filteredFromLocations.map((loc, idx) => (
-                      <li key={idx} onClick={() => { setFromObj(loc); setShowFromDropdown(false); }} className="p-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 flex items-center">
-                        <div className="flex items-center gap-3 overflow-hidden">
-                          <span className="material-symbols-outlined text-gray-400">flight_takeoff</span>
-                          <div className="truncate">
-                            <div className="font-bold text-black text-sm truncate">{loc.title} {loc.code && <span className="font-normal text-xs text-gray-500 ml-1">{loc.code}</span>}</div>
-                            <div className="text-xs text-gray-500 truncate">{loc.subtitle}</div>
+                  <ul className="max-h-[250px] overflow-y-auto no-scrollbar to-dropdown-list py-1">
+                    {filteredToLocations.length === 0 ? <li className="p-4 text-center text-gray-400 text-xs">No locations found</li> : filteredToLocations.map((loc, idx) => {
+                      const isActive = idx === toActiveIndex;
+                      return (
+                        <li 
+                          key={idx} 
+                          onMouseEnter={() => setToActiveIndex(idx)}
+                          onClick={() => { 
+                            setToObj(loc); 
+                            setShowToDropdown(false); 
+                            // Auto-advance: Focus and trigger departure date picker
+                            setTimeout(() => {
+                              if (departureDateRef.current) {
+                                departureDateRef.current.focus();
+                                if (typeof departureDateRef.current.showPicker === 'function') {
+                                  try {
+                                    departureDateRef.current.showPicker();
+                                  } catch (err) {}
+                                }
+                              }
+                            }, 100);
+                          }} 
+                          className={`px-4 py-2.5 cursor-pointer border-b border-gray-50 flex items-center transition-colors duration-150 ${
+                            isActive ? 'bg-[#008cff]/10 border-l-4 border-l-[#008cff] pl-3 font-bold active-item' : 'hover:bg-gray-50'
+                          }`}
+                        >
+                          <div className="flex items-center gap-3 overflow-hidden">
+                            <span className={`material-symbols-outlined text-[18px] ${isActive ? 'text-[#008cff]' : 'text-gray-400'}`}>{isHotel ? 'home_pin' : activeTab === 'cabs' ? 'flag' : 'flight_land'}</span>
+                            <div className="truncate">
+                              <div className={`text-sm truncate ${isActive ? 'text-[#008cff] font-bold' : 'text-gray-900 font-semibold'}`}>{loc.title} {loc.code && <span className="font-normal text-xs text-gray-500 ml-1">{loc.code}</span>}</div>
+                              <div className="text-[11px] text-gray-500 truncate">{loc.subtitle}</div>
+                            </div>
                           </div>
-                        </div>
-                      </li>
-                    ))}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               )}
             </div>
-          )}
-
-          {/* SWAP BUTTON */}
-          {showFromInput && (
-            <div className="hidden md:block absolute left-[25%] top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-              <button
-                className="w-8 h-8 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-md hover:border-[#008cff] transition-colors group"
-                onClick={() => { const temp = fromObj; setFromObj(toObj); setToObj(temp); }}
-              >
-                <svg className="w-4 h-4 text-[#008cff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                </svg>
-              </button>
-            </div>
-          )}
-
-          {/* TO */}
-          <div
-            className={`col-span-1 ${isHotel ? 'md:col-span-3' : 'md:col-span-3'} border-b md:border-b-0 md:border-r border-gray-200 p-4 hover:bg-[#eaf5ff] cursor-pointer transition-colors relative ${!showFromInput && 'md:rounded-l-xl'}`}
-            onClick={() => { setShowToDropdown(true); setToSearchQuery(""); }}
-            ref={toRef}
-          >
-            <div className="text-xs font-bold text-[#9b9b9b] mb-1 uppercase">{isHotel ? 'Destination' : activeTab === 'cabs' ? 'Drop-off' : 'To'}</div>
-            {toObj ? (
-              <>
-                <div className="text-2xl md:text-3xl font-black text-black truncate">{toObj.title}</div>
-                <div className="text-xs text-[#4a4a4a] truncate">{toObj.subtitle}</div>
-              </>
-            ) : (
-              <>
-                <div className="text-2xl md:text-3xl font-black text-black">Select</div>
-                <div className="text-xs text-[#4a4a4a] truncate">{isHotel ? 'City, Property or Location' : activeTab === 'cabs' ? 'Drop-off Location' : 'Destination City'}</div>
-              </>
-            )}
-            {/* TO Dropdown */}
-            {showToDropdown && (
-              <div className="absolute top-[100%] left-0 w-[320px] md:w-[350px] z-50 bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.15)] border border-gray-200 overflow-hidden mt-1 cursor-default" onClick={e => e.stopPropagation()}>
-                <div className="p-3 bg-[#eaf5ff] border-b border-gray-200">
-                  <input
-                    type="text" autoFocus
-                    className="w-full bg-white border border-gray-300 rounded px-3 py-2 outline-none focus:border-[#008cff] text-black"
-                    placeholder="To"
-                    value={toSearchQuery} onChange={e => setToSearchQuery(e.target.value)}
-                  />
-                </div>
-                <ul className="max-h-[250px] overflow-y-auto no-scrollbar">
-                  {filteredToLocations.length === 0 ? <li className="p-3 text-center text-gray-500">No results found</li> : filteredToLocations.map((loc, idx) => (
-                    <li key={idx} onClick={() => { setToObj(loc); setShowToDropdown(false); }} className="p-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 flex items-center">
-                      <div className="flex items-center gap-3 overflow-hidden">
-                        <span className="material-symbols-outlined text-gray-400">flight_land</span>
-                        <div className="truncate">
-                          <div className="font-bold text-black text-sm truncate">{loc.title} {loc.code && <span className="font-normal text-xs text-gray-500 ml-1">{loc.code}</span>}</div>
-                          <div className="text-xs text-gray-500 truncate">{loc.subtitle}</div>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </div>
 
           {/* DEPARTURE */}
-          <div className="col-span-1 md:col-span-2 border-b md:border-b-0 md:border-r border-gray-200 p-4 hover:bg-[#eaf5ff] cursor-pointer transition-colors relative">
-            <div className="flex items-center">
-              <span className="text-xs font-bold text-[#9b9b9b] mb-1 uppercase mr-1">{isHotel ? 'Check-In' : 'Departure'}</span>
-              <svg className="w-3 h-3 text-[#008cff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
-            </div>
-            <div className="mt-1">
-              {departureDisplay ? (
-                <>
-                  <div className="flex items-baseline">
-                    <span className="text-2xl md:text-3xl font-black text-black">{departureDisplay.day}</span>
-                    <span className="text-base md:text-xl font-bold ml-1 text-black">{departureDisplay.monthYear}</span>
-                  </div>
-                  <div className="text-xs text-[#4a4a4a]">{departureDisplay.dayName}</div>
-                </>
-              ) : (
-                <input
-                  type="date"
-                  value={date}
-                  onChange={e => setDate(e.target.value)}
-                  className="bg-transparent border-none outline-none w-full font-black text-[16px] md:text-[20px] lg:text-2xl text-black cursor-pointer focus:ring-0 p-0"
-                />
-              )}
-              {departureDisplay && (
-                <input
-                  type="date"
-                  value={date}
-                  onChange={e => setDate(e.target.value)}
-                  className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
-                />
-              )}
+          <div 
+            onClick={() => {
+              if (departureDateRef.current) {
+                departureDateRef.current.focus();
+                if (typeof departureDateRef.current.showPicker === 'function') {
+                  try {
+                    departureDateRef.current.showPicker();
+                  } catch (err) {}
+                }
+              }
+            }}
+            className="col-span-1 md:col-span-2 border border-gray-200 rounded-xl p-4 bg-white hover:border-[#008cff]/50 hover:bg-[#008cff]/5 cursor-pointer transition-all duration-300 relative hover:-translate-y-0.5 hover:shadow-md z-10 hover:z-20"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#008cff] shrink-0">
+                <span className="material-symbols-outlined text-[20px]">calendar_month</span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">{isHotel ? 'Check-In' : 'Departure'}</div>
+                <div className="mt-0.5 relative">
+                  {departureDisplay ? (
+                    <>
+                      <div className="flex items-baseline leading-none">
+                        <span className="text-xl font-black text-gray-900 leading-none">{departureDisplay.day}</span>
+                        <span className="text-xs font-bold ml-1 text-gray-900 leading-none">{departureDisplay.monthYear}</span>
+                      </div>
+                      <div className="text-[10px] text-gray-500 leading-none mt-1">{departureDisplay.dayName}</div>
+                    </>
+                  ) : (
+                    <div className="text-sm font-bold text-gray-400 mt-1">Select Date</div>
+                  )}
+                  <input
+                    ref={departureDateRef}
+                    type="date"
+                    value={date}
+                    onChange={e => handleDepartureDateChange(e.target.value)}
+                    className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
           {/* RETURN / CHECK-OUT */}
-          <div className="col-span-1 md:col-span-2 border-b md:border-b-0 md:border-r border-gray-200 p-4 hover:bg-[#eaf5ff] cursor-pointer transition-colors relative">
-            <div className="flex items-center">
-              <span className="text-xs font-bold text-[#9b9b9b] mb-1 uppercase mr-1">{isHotel ? 'Check-Out' : 'Return'}</span>
-              <svg className="w-3 h-3 text-[#008cff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
-            </div>
-            {isHotel || tripType === 'roundtrip' ? (
-              <div className="mt-1">
-                <input
-                  type="date"
-                  value={checkoutDate}
-                  onChange={e => setCheckoutDate(e.target.value)}
-                  className="bg-transparent border-none outline-none w-full font-black text-[16px] md:text-[20px] lg:text-2xl text-black cursor-pointer focus:ring-0 p-0"
-                />
+          <div 
+            onClick={() => {
+              if (isHotel || tripType === 'roundtrip') {
+                if (returnDateRef.current) {
+                  returnDateRef.current.focus();
+                  if (typeof returnDateRef.current.showPicker === 'function') {
+                    try {
+                      returnDateRef.current.showPicker();
+                    } catch (err) {}
+                  }
+                }
+              }
+            }}
+            className="col-span-1 md:col-span-2 border border-gray-200 rounded-xl p-4 bg-white hover:border-[#008cff]/50 hover:bg-[#008cff]/5 cursor-pointer transition-all duration-300 relative hover:-translate-y-0.5 hover:shadow-md z-10 hover:z-20"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#008cff] shrink-0">
+                <span className="material-symbols-outlined text-[20px]">calendar_today</span>
               </div>
-            ) : (
-              <div className="text-sm font-semibold text-[#9b9b9b] mt-1 leading-snug">Tap to add a return date for bigger discounts</div>
-            )}
+              <div className="flex-1 min-w-0">
+                <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">{isHotel ? 'Check-Out' : 'Return'}</div>
+                <div className="mt-0.5 relative">
+                  {isHotel || tripType === 'roundtrip' ? (
+                    <>
+                      {checkoutDate ? (
+                        (() => {
+                          const d = new Date(checkoutDate + "T00:00:00");
+                          const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+                          const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+                          return (
+                            <>
+                              <div className="flex items-baseline leading-none">
+                                <span className="text-xl font-black text-gray-900 leading-none">{d.getDate()}</span>
+                                <span className="text-xs font-bold ml-1 text-gray-900 leading-none">{monthNames[d.getMonth()] + "'" + String(d.getFullYear()).slice(2)}</span>
+                              </div>
+                              <div className="text-[10px] text-gray-500 leading-none mt-1">{dayNames[d.getDay()]}</div>
+                            </>
+                          );
+                        })()
+                      ) : (
+                        <div className="text-sm font-bold text-gray-400 mt-1">Select Date</div>
+                      )}
+                      <input
+                        ref={returnDateRef}
+                        type="date"
+                        value={checkoutDate}
+                        onChange={e => handleReturnDateChange(e.target.value)}
+                        className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
+                      />
+                    </>
+                  ) : (
+                    <div className="text-[10px] font-semibold text-gray-400 leading-tight mt-1">Tap to add return</div>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* TRAVELLERS & CLASS */}
           <div
-            className="col-span-1 md:col-span-2 p-4 hover:bg-[#eaf5ff] cursor-pointer transition-colors rounded-b-xl md:rounded-bl-none md:rounded-r-xl relative"
+            className={`col-span-1 md:col-span-2 border border-gray-200 rounded-xl p-4 bg-white hover:border-[#008cff]/50 hover:bg-[#008cff]/5 cursor-pointer transition-all duration-300 relative hover:-translate-y-0.5 hover:shadow-md ${showTravellerDropdown ? 'ring-2 ring-[#008cff] border-[#008cff] shadow-md bg-white z-30' : 'z-10 hover:z-20'}`}
             onClick={() => setShowTravellerDropdown(true)}
             ref={travellerRef}
           >
-            <div className="flex items-center">
-              <span className="text-xs font-bold text-[#9b9b9b] mb-1 uppercase mr-1">
-                {isHotel ? 'Rooms & Guests' :
-                 activeTab === 'cabs' ? 'Vehicle Type' :
-                 activeTab === 'buses' ? 'Travellers' :
-                 'Travellers & Class'}
-              </span>
-              <svg className="w-3 h-3 text-[#008cff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
-            </div>
-
-            {isHotel ? (
-              <>
-                <div className="flex items-baseline mt-1">
-                  <span className="text-2xl md:text-3xl font-black text-black">{rooms}</span>
-                  <span className="text-base md:text-lg font-bold ml-1 text-black">Room{rooms > 1 ? 's' : ''}</span>
-                </div>
-                <div className="text-xs text-[#4a4a4a] truncate">{adults + children} Guest{(adults + children) > 1 ? 's' : ''}</div>
-              </>
-            ) : activeTab === 'cabs' ? (
-              <div className="flex items-baseline mt-1">
-                <span className="text-xl md:text-2xl font-black text-black truncate">{travelClass}</span>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#008cff] shrink-0">
+                <span className="material-symbols-outlined text-[20px]">group</span>
               </div>
-            ) : (
-              <>
-                <div className="flex items-baseline mt-1">
-                  <span className="text-2xl md:text-3xl font-black text-black">{adults + children + infants}</span>
-                  <span className="text-base md:text-lg font-bold ml-1 text-black">Traveller{(adults + children + infants) > 1 ? 's' : ''}</span>
+              <div className="flex-1 min-w-0">
+                <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">
+                  {isHotel ? 'Guests' :
+                   activeTab === 'cabs' ? 'Vehicle' :
+                   activeTab === 'buses' ? 'Seats' :
+                   'Travellers'}
                 </div>
-                <div className="text-xs text-[#4a4a4a] truncate">{travelClass}</div>
-              </>
-            )}
+
+                {isHotel ? (
+                  <>
+                    <div className="text-lg font-black text-gray-900 leading-none mt-0.5">{rooms} Room{rooms > 1 ? 's' : ''}</div>
+                    <div className="text-[10px] text-gray-500 truncate leading-none mt-0.5">{adults + children} Guest{(adults + children) > 1 ? 's' : ''}</div>
+                  </>
+                ) : activeTab === 'cabs' ? (
+                  <div className="text-sm font-bold text-gray-900 truncate mt-1">{travelClass}</div>
+                ) : (
+                  <>
+                    <div className="text-lg font-black text-gray-900 leading-none mt-0.5">{adults + children + infants} Pax</div>
+                    <div className="text-[10px] text-gray-500 truncate leading-none mt-0.5">{travelClass}</div>
+                  </>
+                )}
+              </div>
+            </div>
 
             {/* TRAVELLERS Dropdown */}
             {showTravellerDropdown && (
-              <div className="absolute top-[100%] right-0 md:left-0 md:right-auto w-[300px] z-50 bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.15)] border border-gray-200 p-4 mt-1 cursor-default" onClick={e => e.stopPropagation()}>
+              <div className="absolute top-[100%] right-0 md:left-0 md:right-auto w-[300px] z-50 bg-white rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.15)] border border-gray-100 p-5 mt-2 cursor-default" onClick={e => e.stopPropagation()}>
                 {/* ROOMS (Hotels/Packages only) */}
                 {isHotel && (
                   <div className="flex justify-between items-center mb-4">
                     <div className="font-bold text-black text-sm">Rooms</div>
                     <div className="flex items-center gap-3">
                       <button onClick={() => setRooms(Math.max(1, rooms - 1))} className="w-6 h-6 rounded border border-[#008cff] text-[#008cff] flex items-center justify-center font-bold hover:bg-[#eaf5ff]">-</button>
-                      <span className="font-bold w-4 text-center">{rooms}</span>
+                      <span className="font-bold w-4 text-center text-black">{rooms}</span>
                       <button onClick={() => setRooms(rooms + 1)} className="w-6 h-6 rounded border border-[#008cff] text-[#008cff] flex items-center justify-center font-bold hover:bg-[#eaf5ff]">+</button>
                     </div>
                   </div>
@@ -513,7 +747,7 @@ export function SearchWidget() {
                     </div>
                     <div className="flex items-center gap-3">
                       <button onClick={() => setAdults(Math.max(1, adults - 1))} className="w-6 h-6 rounded border border-[#008cff] text-[#008cff] flex items-center justify-center font-bold hover:bg-[#eaf5ff]">-</button>
-                      <span className="font-bold w-4 text-center">{adults}</span>
+                      <span className="font-bold w-4 text-center text-black">{adults}</span>
                       <button onClick={() => setAdults(isHotel ? Math.min(rooms * 4, adults + 1) : adults + 1)} className="w-6 h-6 rounded border border-[#008cff] text-[#008cff] flex items-center justify-center font-bold hover:bg-[#eaf5ff]">+</button>
                     </div>
                   </div>
@@ -527,7 +761,7 @@ export function SearchWidget() {
                     </div>
                     <div className="flex items-center gap-3">
                       <button onClick={() => setChildren(Math.max(0, children - 1))} className="w-6 h-6 rounded border border-[#008cff] text-[#008cff] flex items-center justify-center font-bold hover:bg-[#eaf5ff]">-</button>
-                      <span className="font-bold w-4 text-center">{children}</span>
+                      <span className="font-bold w-4 text-center text-black">{children}</span>
                       <button onClick={() => setChildren(isHotel ? Math.min(rooms * 3, children + 1) : children + 1)} className="w-6 h-6 rounded border border-[#008cff] text-[#008cff] flex items-center justify-center font-bold hover:bg-[#eaf5ff]">+</button>
                     </div>
                   </div>
@@ -541,7 +775,7 @@ export function SearchWidget() {
                     </div>
                     <div className="flex items-center gap-3">
                       <button onClick={() => setInfants(Math.max(0, infants - 1))} className="w-6 h-6 rounded border border-[#008cff] text-[#008cff] flex items-center justify-center font-bold hover:bg-[#eaf5ff]">-</button>
-                      <span className="font-bold w-4 text-center">{infants}</span>
+                      <span className="font-bold w-4 text-center text-black">{infants}</span>
                       <button onClick={() => setInfants(infants + 1)} className="w-6 h-6 rounded border border-[#008cff] text-[#008cff] flex items-center justify-center font-bold hover:bg-[#eaf5ff]">+</button>
                     </div>
                   </div>
@@ -566,38 +800,14 @@ export function SearchWidget() {
                   </div>
                 )}
                 <div className="mt-4 text-right">
-                  <button onClick={() => setShowTravellerDropdown(false)} className="text-white bg-[#008cff] hover:bg-[#005fbe] px-4 py-1.5 rounded-full font-bold text-sm transition-colors">Apply</button>
+                  <button onClick={() => setShowTravellerDropdown(false)} className="text-white bg-[#008cff] hover:bg-[#005fbe] px-4 py-1.5 rounded-full font-bold text-sm transition-colors animate-pulse">Apply</button>
                 </div>
               </div>
             )}
           </div>
         </div>
 
-        {/* ── Special Fares (Flights / Trains only) ── */}
-        {(activeTab === "flights" || activeTab === "trains") && (
-          <div className="flex items-center space-x-3 mb-6 md:mb-8">
-            <span className="text-[10px] font-black text-black uppercase w-16 leading-tight shrink-0">Special Fares</span>
-            <div className="flex space-x-2 overflow-x-auto no-scrollbar">
-              {specialFares.map((fare) => (
-                <div
-                  key={fare.id}
-                  onClick={() => setActiveFare(fare.id)}
-                  className={`rounded-md p-2 flex flex-col min-w-[100px] cursor-pointer transition-colors relative shrink-0 ${
-                    activeFare === fare.id
-                      ? 'bg-[#eaf5ff] border border-[#008cff]'
-                      : 'bg-gray-50 border border-gray-200 hover:border-[#008cff]'
-                  }`}
-                >
-                  {fare.badge && (
-                    <span className="absolute top-[-8px] right-2 bg-purple-100 text-purple-600 text-[9px] font-bold px-1 rounded border border-purple-200">{fare.badge}</span>
-                  )}
-                  <span className={`text-xs font-bold ${activeFare === fare.id ? 'text-[#008cff]' : 'text-[#4a4a4a]'}`}>{fare.label}</span>
-                  <span className="text-[10px] text-[#9b9b9b]">{fare.desc}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+
 
         {/* ── Bottom Actions Area ── */}
         <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between mb-8 gap-4">

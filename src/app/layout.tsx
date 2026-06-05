@@ -7,6 +7,8 @@ import {
   OrganizationStructuredData,
   FAQStructuredData,
 } from "./structured-data";
+import Script from "next/script";
+import { ErrorSuppressor } from "@/components/ErrorSuppressor";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -90,21 +92,9 @@ export default function RootLayout({
         <WebsiteStructuredData />
         <OrganizationStructuredData />
         <FAQStructuredData />
-        <script
-          {...{ nowprocket: "", "seraph-accel-crit": "1" }}
-          data-noptimize="1"
-          data-cfasync="false"
-          data-wpfc-render="false"
-          data-no-defer="1"
-          dangerouslySetInnerHTML={{
-            __html: `
-  (function () {
-      var script = document.createElement("script");
-      script.async = 1;
-      script.src = 'https://emrldtp.cc/NTM0NDcw.js?t=534470';
-      document.head.appendChild(script);
-  })();`
-          }}
+        <Script
+          src="https://emrldtp.cc/NTM0NDcw.js?t=534470"
+          strategy="lazyOnload"
         />
         <link href="https://fonts.cdnfonts.com/css/metropolis" rel="stylesheet" />
         <link
@@ -127,6 +117,7 @@ export default function RootLayout({
         `}} />
       </head>
       <body className={`${inter.variable} bg-background text-on-surface antialiased overflow-x-hidden`}>
+        <ErrorSuppressor />
         <Providers>
           {children}
         </Providers>

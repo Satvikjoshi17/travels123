@@ -152,8 +152,22 @@ export function ExploreFlightsSection() {
     const originCode = selectedOrigin.code;
     const destCode = deal.destinationCode || "PAR";
     
-    // Construct direct search URL that lands precisely on Jetradar with Travelpayouts marker
-    const redirectUrl = `https://www.jetradar.com/search/?marker=734132&origin=${originCode}&destination=${destCode}&depart_date=${deal.departDate}&return_date=${deal.returnDate}&adults=1&one_way=false`;
+    // Helper to extract DDMM from Date string YYYY-MM-DD
+    const parseDDMM = (ymd: string) => {
+      if (!ymd || !ymd.includes("-")) return "";
+      const parts = ymd.split("-");
+      if (parts.length < 3) return "";
+      return `${parts[2]}${parts[1]}`;
+    };
+
+    const depDDMM = parseDDMM(deal.departDate);
+    const retDDMM = parseDDMM(deal.returnDate);
+    
+    // Default to 1 passenger, Economy class (y) for featured deals
+    const currencyCode = selectedCountry?.currency?.toUpperCase() || "USD";
+    const aviasalesSearchUrl = `https://www.aviasales.com/search/${originCode.toUpperCase()}${depDDMM}${destCode.toUpperCase()}${retDDMM}1y?currency=${currencyCode}&request_source=country_change&market=${selectedCountry?.code?.toLowerCase() || "us"}`;
+    const redirectUrl = `https://aviasales.tpk.lv/ok6lj7IX?u=${encodeURIComponent(aviasalesSearchUrl)}`;
+    
     window.open(redirectUrl, "_blank");
   };
 

@@ -76,7 +76,7 @@ export default function Home() {
                 </div>
               </a>
               <a 
-                href="https://tp.media/r?marker=734132&trs=534470&p=1904&campaign_id=31&u=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DMaldives"
+                href={`https://tp.media/r?marker=734132&trs=534470&p=1904&campaign_id=31&u=${encodeURIComponent(`https://www.booking.com/searchresults.html?ss=Maldives&selected_currency=${selectedCountry?.currency?.toUpperCase() || "USD"}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all h-80 block"
@@ -129,7 +129,7 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
               <a 
-                href="https://www.jetradar.com/search/?marker=734132&origin=NYC&destination=DEL&adults=1&one_way=false"
+                href={`https://www.jetradar.com/search/?marker=734132&origin=NYC&destination=DEL&adults=1&one_way=false&currency=${selectedCountry?.currency?.toUpperCase() || "USD"}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-surface-container-lowest dark:bg-surface-container rounded-xl overflow-hidden shadow-lg hover:shadow-primary/10 transition-all border border-outline-variant/20 group block text-left"
@@ -151,7 +151,7 @@ export default function Home() {
                 </div>
               </a>
               <a 
-                href="https://tp.media/r?marker=734132&trs=534470&p=1904&campaign_id=31&u=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DTokyo"
+                href={`https://tp.media/r?marker=734132&trs=534470&p=1904&campaign_id=31&u=${encodeURIComponent(`https://www.booking.com/searchresults.html?ss=Tokyo&selected_currency=${selectedCountry?.currency?.toUpperCase() || "USD"}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-surface-container-lowest dark:bg-surface-container rounded-xl overflow-hidden shadow-lg hover:shadow-primary/10 transition-all border border-outline-variant/20 group block text-left"
@@ -324,65 +324,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Comprehensive Travel Insurance Section */}
-        <section className="py-stack-lg bg-surface-container-low dark:bg-surface-container transition-colors duration-300">
-          <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center">
-              <div>
-                <span className="inline-block bg-secondary text-white font-label-bold text-[10px] uppercase px-2 py-0.5 rounded-full mb-2">Worry-Free Travel</span>
-                <h2 className="font-headline-md text-headline-md text-primary dark:text-white mb-stack-sm">Comprehensive Travel Insurance</h2>
-                <p className="font-body-lg text-body-lg text-on-surface-variant dark:text-white/80 mb-stack-md">Protect your trip from the unexpected. Our insurance partners provide global coverage for medical emergencies, trip cancellations, and lost luggage.</p>
-                <div className="space-y-stack-sm mb-stack-md">
-                  <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-secondary">check_circle</span>
-                    <span className="font-body-lg text-on-surface dark:text-white">24/7 Global Assistance Hotline</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-secondary">check_circle</span>
-                    <span className="font-body-lg text-on-surface dark:text-white">Medical Coverage up to {mounted ? formatPrice(1000000) : '$1,000,000'}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-secondary">check_circle</span>
-                    <span className="font-body-lg text-on-surface dark:text-white">Flexible Cancellation Policies</span>
-                  </div>
-                </div>
-                <button className="bg-primary text-on-primary dark:text-background px-stack-lg py-stack-md rounded-lg font-headline-sm text-headline-sm hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95">Get a Quote Now</button>
-              </div>
-              
-              <div className="relative flex justify-center mt-10 lg:mt-0 overflow-hidden md:overflow-visible p-10 -m-10">
-                <div className="absolute top-0 md:-top-10 left-0 md:-left-10 w-40 h-40 bg-secondary/20 dark:bg-secondary/10 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-0 md:-bottom-10 right-0 md:-right-10 w-60 h-60 bg-primary/20 dark:bg-primary/10 rounded-full blur-3xl"></div>
-                <div className="bg-surface-container-lowest dark:bg-surface-container-high p-stack-lg rounded-2xl shadow-xl border border-outline-variant/30 relative z-10 w-full max-w-md">
-                  <div className="flex items-center justify-between mb-stack-md">
-                    <div className="flex items-center gap-stack-sm">
-                      <div className="bg-secondary/10 p-2 rounded-full">
-                        <span className="material-symbols-outlined text-secondary">security</span>
-                      </div>
-                      <span className="font-label-bold text-label-bold text-primary dark:text-white">GlobeTrek Protect+</span>
-                    </div>
-                    <span className="text-xs text-outline">Partnered with Allianz</span>
-                  </div>
-                  <div className="space-y-stack-md">
-                    <div className="p-3 bg-surface dark:bg-surface-container rounded-lg flex justify-between items-center">
-                      <span className="font-body-sm text-on-surface-variant dark:text-white/80">Standard Plan</span>
-                      <span className="font-label-bold text-secondary">{mounted ? formatPrice(2.5) : '$2.50'} / day</span>
-                    </div>
-                    <div className="p-3 bg-primary-container/10 border-2 border-primary-container rounded-lg flex justify-between items-center relative">
-                      <span className="font-body-sm text-on-surface-variant dark:text-white/80">Platinum Elite</span>
-                      <span className="font-label-bold text-primary dark:text-primary-container">{mounted ? formatPrice(5.2) : '$5.20'} / day</span>
-                      <span className="absolute -top-2 right-4 bg-tertiary text-on-tertiary text-[10px] px-2 rounded-full">MOST POPULAR</span>
-                    </div>
-                    <div className="p-3 bg-surface dark:bg-surface-container rounded-lg flex justify-between items-center">
-                      <span className="font-body-sm text-on-surface-variant dark:text-white/80">Family Bundle</span>
-                      <span className="font-label-bold text-secondary">{mounted ? formatPrice(12) : '$12.00'} / day</span>
-                    </div>
-                  </div>
-                  <p className="mt-4 text-[10px] text-outline text-center">Terms and conditions apply. Policy underwritten by verified carriers.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+
 
         {/* Trending Destinations (Bento Grid) */}
         <section className="py-stack-lg bg-surface transition-colors duration-300">
@@ -390,7 +332,7 @@ export default function Home() {
             <h2 className="font-headline-md text-headline-md text-on-surface dark:text-white mb-stack-md">Trending Destinations</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
               <a 
-                href="https://www.jetradar.com/search/?marker=734132&destination=CDG"
+                href={`https://www.jetradar.com/search/?marker=734132&destination=CDG&currency=${selectedCountry?.currency?.toUpperCase() || "USD"}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="h-64 md:h-auto md:col-span-2 md:row-span-2 relative rounded-2xl overflow-hidden group shadow-lg block text-left"
@@ -403,7 +345,7 @@ export default function Home() {
                 </div>
               </a>
               <a 
-                href="https://tp.media/r?marker=734132&trs=534470&p=1904&campaign_id=31&u=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DBali"
+                href={`https://tp.media/r?marker=734132&trs=534470&p=1904&campaign_id=31&u=${encodeURIComponent(`https://www.booking.com/searchresults.html?ss=Bali&selected_currency=${selectedCountry?.currency?.toUpperCase() || "USD"}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="h-64 md:h-auto md:col-span-2 md:row-span-1 relative rounded-2xl overflow-hidden group shadow-lg block text-left"
@@ -429,7 +371,7 @@ export default function Home() {
                 </div>
               </a>
               <a 
-                href="https://search.hotellook.com/?marker=734132&destination=Dubai"
+                href={`https://search.hotellook.com/?marker=734132&destination=Dubai&currency=${selectedCountry?.currency?.toLowerCase() || "usd"}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="h-48 md:h-auto md:col-span-1 md:row-span-1 relative rounded-2xl overflow-hidden group shadow-lg block text-left"
