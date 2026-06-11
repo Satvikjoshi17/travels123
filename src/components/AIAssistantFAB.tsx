@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export function AIAssistantFAB() {
-  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
   const [showPopup, setShowPopup] = useState(true);
 
   useEffect(() => {
@@ -13,57 +14,18 @@ export function AIAssistantFAB() {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleChatClick = () => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      // Grab 'to' from query params if user did a search, or fallback to 'destination'
+      const toVal = params.get("to") || params.get("destination") || "";
+      const query = toVal ? `?destination=${encodeURIComponent(toVal)}` : "";
+      router.push(`/travel-assistant${query}`);
+    }
+  };
+
   return (
     <div className="fixed bottom-20 md:bottom-8 right-4 md:right-8 z-[100] flex flex-col items-end">
-      {/* Chat Overlay */}
-      <div 
-        className={`${isOpen ? 'flex' : 'hidden'} bg-white dark:bg-surface-container-low w-80 md:w-96 h-[500px] rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex-col mb-4 overflow-hidden animate-in fade-in duration-300 border border-gray-200 dark:border-gray-800`} 
-        id="ai-chat-overlay"
-      >
-        {/* Header */}
-        <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 p-4 flex justify-between items-center border-b border-blue-200 dark:border-blue-900">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center shadow-sm relative overflow-hidden">
-              <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
-              <span className="material-symbols-outlined text-white text-[18px] relative z-10">travel_explore</span>
-            </div>
-            <div className="flex items-baseline">
-              <span className="text-blue-600 dark:text-blue-400 font-bold italic text-lg">Milo</span>
-            </div>
-          </div>
-          <button 
-            className="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white flex items-center justify-center transition-colors" 
-            onClick={() => setIsOpen(false)}
-          >
-            <span className="material-symbols-outlined">close</span>
-          </button>
-        </div>
-        
-        {/* Messages Area */}
-        <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-gray-50 dark:bg-transparent">
-          <div className="bg-white dark:bg-surface-container rounded-lg rounded-tl-none p-3 text-gray-800 dark:text-gray-200 text-sm max-w-[85%] shadow-sm border border-gray-100 dark:border-gray-800">
-            Hi! I'm <span className="font-bold italic text-blue-500">Milo</span>. Tell me where you want to go, and I'll compare prices across 50+ sites to find you the absolute best fare!
-          </div>
-        </div>
-        
-        {/* Input Area */}
-        <div className="p-4 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-surface-container-low">
-          <div className="flex items-center gap-2 bg-gray-100 dark:bg-surface-container rounded-full px-4 py-2 border border-transparent focus-within:border-blue-400 transition-colors">
-            <input 
-              className="flex-1 bg-transparent border-none focus:ring-0 text-sm py-1 outline-none text-gray-800 dark:text-white" 
-              placeholder="Ask me anything..." 
-              type="text"
-            />
-            <button className="text-gray-400 hover:text-blue-500 transition-colors flex items-center justify-center">
-              <span className="material-symbols-outlined text-[20px]">mic</span>
-            </button>
-            <button className="text-blue-500 hover:text-blue-600 p-1 rounded-full flex items-center justify-center transition-colors">
-              <span className="material-symbols-outlined text-[20px]">send</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* FAB Button and Popup */}
       <div className="relative">
         <div 
@@ -80,9 +42,10 @@ export function AIAssistantFAB() {
         </div>
 
         <button 
-          className="group relative flex items-center justify-center w-[60px] h-[60px] md:w-[68px] md:h-[68px] bg-white rounded-full border border-gray-200 shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all hover:scale-105 active:scale-95 z-50" 
-          onClick={() => setIsOpen(!isOpen)}
+          className="group relative flex items-center justify-center w-[60px] h-[60px] md:w-[68px] md:h-[68px] bg-white dark:bg-surface-container-low rounded-full border border-gray-250 dark:border-gray-800 shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all hover:scale-105 active:scale-95 z-50 cursor-pointer" 
+          onClick={handleChatClick}
           id="milo-bot"
+          aria-label="Ask Milo AI Assistant"
         >
           {/* Custom Animated CSS Bot Icon */}
           <div className="w-[85%] h-[85%] rounded-full flex items-center justify-center relative bg-gradient-to-tr from-blue-600 via-[#008cff] to-cyan-400 shadow-[inset_0_-2px_6px_rgba(0,0,0,0.2)]">

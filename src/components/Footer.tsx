@@ -14,7 +14,7 @@ export function Footer() {
 
   const companyLinks = [
     { label: "About Us", href: "/about" },
-    { label: "Careers", href: "#" },
+    { label: "Careers", href: "/careers" },
     { label: "Press Room", href: "#" },
     { label: "Partner Help", href: "#" },
     { label: "Advertise with Us", href: "#" },
@@ -31,7 +31,7 @@ export function Footer() {
   const exploreLinks = [
     { label: "Price Alerts", href: "#" },
     { label: "Explore Anywhere", href: "#" },
-    { label: "Travel Tips & Guides", href: "#" },
+    { label: "Travel Tips & Guides", href: "/blog" },
     { label: "Best Time to Travel", href: "#" },
     { label: "AI Travel Planner", href: "/ai" },
   ];

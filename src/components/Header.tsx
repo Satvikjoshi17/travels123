@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { ThemeToggle } from "./ThemeToggle";
 import { useCurrency } from "@/contexts/CurrencyContext";
 
 export function Header() {
@@ -54,7 +53,7 @@ export function Header() {
                 </button>
               )}
 
-              <ThemeToggle />
+
 
               <div className="hidden sm:flex items-center gap-4">
                 {/* About Link */}
@@ -63,6 +62,24 @@ export function Header() {
                   className="relative text-sm font-label-bold text-on-surface-variant dark:text-white/70 hover:text-primary dark:hover:text-white transition-colors group px-2 py-1"
                 >
                   About
+                  <div className="absolute bottom-0 left-2 right-2 h-[2px] bg-primary dark:bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full" />
+                </Link>
+
+                {/* Blog Link */}
+                <Link
+                  href="/blog"
+                  className="relative text-sm font-label-bold text-on-surface-variant dark:text-white/70 hover:text-primary dark:hover:text-white transition-colors group px-2 py-1"
+                >
+                  Blog
+                  <div className="absolute bottom-0 left-2 right-2 h-[2px] bg-primary dark:bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full" />
+                </Link>
+
+                {/* Careers Link */}
+                <Link
+                  href="/careers"
+                  className="relative text-sm font-label-bold text-on-surface-variant dark:text-white/70 hover:text-primary dark:hover:text-white transition-colors group px-2 py-1"
+                >
+                  Careers
                   <div className="absolute bottom-0 left-2 right-2 h-[2px] bg-primary dark:bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full" />
                 </Link>
 
@@ -98,7 +115,7 @@ export function Header() {
           {/* Menu Panel */}
           <div className="absolute top-16 left-0 right-0 bg-surface dark:bg-surface-container border-b border-outline-variant/20 dark:border-white/10 shadow-2xl animate-fade-in max-h-[80vh] overflow-y-auto">
             <div className="p-4 space-y-1">
-              {/* About + Login */}
+              {/* About + Blog + Careers + Login */}
               <Link
                 href="/about"
                 onClick={() => setMobileMenuOpen(false)}
@@ -106,6 +123,24 @@ export function Header() {
               >
                 <span className="material-symbols-outlined text-on-surface-variant text-[22px]">info</span>
                 <span className="font-label-bold text-[15px]">About Us</span>
+              </Link>
+
+              <Link
+                href="/blog"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 px-4 py-3.5 rounded-xl text-on-surface dark:text-white hover:bg-primary/5 transition-colors"
+              >
+                <span className="material-symbols-outlined text-on-surface-variant text-[22px]">rss_feed</span>
+                <span className="font-label-bold text-[15px]">Blog</span>
+              </Link>
+
+              <Link
+                href="/careers"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 px-4 py-3.5 rounded-xl text-on-surface dark:text-white hover:bg-primary/5 transition-colors"
+              >
+                <span className="material-symbols-outlined text-on-surface-variant text-[22px]">work</span>
+                <span className="font-label-bold text-[15px]">Careers</span>
               </Link>
 
               <Link 

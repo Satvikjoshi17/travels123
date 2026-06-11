@@ -3,9 +3,32 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState, Suspense } from "react";
 import Link from "next/link";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { CurrencySelector } from "@/components/CurrencySelector";
 import { useCurrency } from "@/contexts/CurrencyContext";
+
+function AirlineLogo({ code, name, logoBg, textColor }: { code: string; name: string; logoBg: string; textColor: string }) {
+  const [error, setError] = useState(false);
+  const logoUrl = `https://pics.avs.io/60/60/${code}.png`;
+
+  return (
+    <div className="w-12 h-12 rounded-xl bg-white border border-gray-100 flex items-center justify-center shrink-0 shadow-md relative overflow-hidden">
+      {!error ? (
+        <img
+          src={logoUrl}
+          alt={name}
+          className="w-10 h-10 object-contain"
+          onError={() => setError(true)}
+        />
+      ) : (
+        <div className={`w-full h-full bg-gradient-to-br ${logoBg} flex items-center justify-center`}>
+          <span className={`font-black text-sm uppercase ${textColor}`}>
+            {code}
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
 
 function SearchResultsContent() {
   const searchParams = useSearchParams();
@@ -220,7 +243,7 @@ function SearchResultsContent() {
               <span className="text-[10px] sm:text-xs font-label-bold text-on-surface dark:text-white">{selectedCountry.currency}</span>
               <span className="material-symbols-outlined text-[14px] sm:text-[16px] text-on-surface-variant hidden sm:block">expand_more</span>
             </div>
-            <ThemeToggle />
+
           </div>
         </div>
       </nav>
@@ -384,11 +407,12 @@ function SearchResultsContent() {
                         {/* Airline Brand Info */}
                         <div className="flex items-center gap-4 w-full md:w-auto">
                           {/* Circular Logo Indicator */}
-                          <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${flight.logoBg} flex items-center justify-center shrink-0 shadow-md`}>
-                            <span className={`font-black text-sm uppercase ${flight.textColor}`}>
-                              {flight.code}
-                            </span>
-                          </div>
+                          <AirlineLogo
+                            code={flight.code}
+                            name={flight.airline}
+                            logoBg={flight.logoBg}
+                            textColor={flight.textColor}
+                          />
                           <div className="truncate">
                             <h4 className="font-extrabold text-on-surface dark:text-white text-base group-hover:text-primary transition-colors truncate">
                               {flight.airline}

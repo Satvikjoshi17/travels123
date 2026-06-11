@@ -7,7 +7,6 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AIAssistantFAB } from "@/components/AIAssistantFAB";
 import { SearchWidget } from "@/components/SearchWidget";
-import { ExploreFlightsSection } from "@/components/ExploreFlightsSection";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -219,9 +218,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* Live Flight Deals — Powered by Skyscanner API */}
-        <ExploreFlightsSection />
 
         {/* Premium Experiences & Activities Section — Powered by Klook Affiliate */}
         <section className="py-stack-lg bg-surface transition-colors duration-300">

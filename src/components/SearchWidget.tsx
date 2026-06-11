@@ -74,6 +74,10 @@ export function SearchWidget() {
   const [date, setDate] = useState("");
   const [checkoutDate, setCheckoutDate] = useState("");
 
+  /* Cab pickup time state */
+  const [pickupTime, setPickupTime] = useState("09:00 AM");
+  const [showTimeDropdown, setShowTimeDropdown] = useState(false);
+
   /* Traveller state */
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
@@ -100,6 +104,23 @@ export function SearchWidget() {
   const travellerRef = useRef<HTMLDivElement>(null);
   const departureDateRef = useRef<HTMLInputElement>(null);
   const returnDateRef = useRef<HTMLInputElement>(null);
+  const timeRef = useRef<HTMLDivElement>(null);
+
+  /* Initialize default dates on mount */
+  useEffect(() => {
+    const today = new Date();
+    
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const tomorrowStr = tomorrow.toISOString().split('T')[0];
+    
+    const returnDate = new Date(today);
+    returnDate.setDate(returnDate.getDate() + 4);
+    const returnDateStr = returnDate.toISOString().split('T')[0];
+    
+    setDate(tomorrowStr);
+    setCheckoutDate(returnDateStr);
+  }, []);
 
   /* Load location data */
   useEffect(() => {
@@ -134,6 +155,7 @@ export function SearchWidget() {
       if (fromRef.current && !fromRef.current.contains(event.target as Node)) setShowFromDropdown(false);
       if (toRef.current && !toRef.current.contains(event.target as Node)) setShowToDropdown(false);
       if (travellerRef.current && !travellerRef.current.contains(event.target as Node)) setShowTravellerDropdown(false);
+      if (timeRef.current && !timeRef.current.contains(event.target as Node)) setShowTimeDropdown(false);
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
@@ -141,8 +163,15 @@ export function SearchWidget() {
 
   /* Derived variables */
   const isHotel = activeTab === 'hotels' || activeTab === 'villas' || activeTab === 'packages';
-  const showFromInput = !isHotel;
+  const showFromInput = activeTab !== 'hotels' && activeTab !== 'villas' && activeTab !== 'packages' && activeTab !== 'tours';
   const currentDataset = activeTab === "flights" || activeTab === "trains" ? globalAirports : globalCities;
+  const hasReturnField = activeTab !== 'buses' && activeTab !== 'cabs' && activeTab !== 'tours';
+  const departureSpan = (activeTab === 'buses' || activeTab === 'tours') 
+    ? 'col-span-1 md:col-span-3' 
+    : 'col-span-1 md:col-span-2';
+  const guestsSpan = (activeTab === 'buses' || activeTab === 'tours') 
+    ? 'col-span-1 md:col-span-3' 
+    : 'col-span-1 md:col-span-2';
 
   const filteredFromLocations = fromSearchQuery.trim().length > 0
     ? currentDataset.filter(loc => loc.searchString?.includes(fromSearchQuery.toLowerCase())).slice(0, 20)
@@ -416,7 +445,7 @@ export function SearchWidget() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 relative mb-6">
 
           {/* FROM & TO CONTAINER */}
-          <div className="col-span-1 md:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4 relative">
+          <div className={`col-span-1 md:col-span-6 ${showFromInput ? 'grid grid-cols-1 sm:grid-cols-2 gap-4' : 'flex'} relative`}>
             {/* FROM */}
             {showFromInput && (
               <div
@@ -599,14 +628,14 @@ export function SearchWidget() {
                 }
               }
             }}
-            className="col-span-1 md:col-span-2 border border-gray-200 rounded-xl p-4 bg-white hover:border-[#008cff]/50 hover:bg-[#008cff]/5 cursor-pointer transition-all duration-300 relative hover:-translate-y-0.5 hover:shadow-md z-10 hover:z-20"
+            className={`${departureSpan} border border-gray-200 rounded-xl p-4 bg-white hover:border-[#008cff]/50 hover:bg-[#008cff]/5 cursor-pointer transition-all duration-300 relative hover:-translate-y-0.5 hover:shadow-md z-10 hover:z-20`}
           >
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#008cff] shrink-0">
                 <span className="material-symbols-outlined text-[20px]">calendar_month</span>
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">{isHotel ? 'Check-In' : 'Departure'}</div>
+                <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">{isHotel ? 'Check-In' : activeTab === 'tours' ? 'Visit Date' : 'Departure'}</div>
                 <div className="mt-0.5 relative">
                   {departureDisplay ? (
                     <>
@@ -632,67 +661,124 @@ export function SearchWidget() {
           </div>
 
           {/* RETURN / CHECK-OUT */}
-          <div 
-            onClick={() => {
-              if (isHotel || tripType === 'roundtrip') {
-                if (returnDateRef.current) {
-                  returnDateRef.current.focus();
-                  if (typeof returnDateRef.current.showPicker === 'function') {
-                    try {
-                      returnDateRef.current.showPicker();
-                    } catch (err) {}
+          {hasReturnField && (
+            <div 
+              onClick={() => {
+                if (isHotel || tripType === 'roundtrip') {
+                  if (returnDateRef.current) {
+                    returnDateRef.current.focus();
+                    if (typeof returnDateRef.current.showPicker === 'function') {
+                      try {
+                        returnDateRef.current.showPicker();
+                      } catch (err) {}
+                    }
                   }
+                } else {
+                  // Flights oneway -> Switch to roundtrip and open return date picker
+                  setTripType('roundtrip');
+                  setTimeout(() => {
+                    if (returnDateRef.current) {
+                      returnDateRef.current.focus();
+                      if (typeof returnDateRef.current.showPicker === 'function') {
+                        try {
+                          returnDateRef.current.showPicker();
+                        } catch (err) {}
+                      }
+                    }
+                  }, 150);
                 }
-              }
-            }}
-            className="col-span-1 md:col-span-2 border border-gray-200 rounded-xl p-4 bg-white hover:border-[#008cff]/50 hover:bg-[#008cff]/5 cursor-pointer transition-all duration-300 relative hover:-translate-y-0.5 hover:shadow-md z-10 hover:z-20"
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#008cff] shrink-0">
-                <span className="material-symbols-outlined text-[20px]">calendar_today</span>
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">{isHotel ? 'Check-Out' : 'Return'}</div>
-                <div className="mt-0.5 relative">
-                  {isHotel || tripType === 'roundtrip' ? (
-                    <>
-                      {checkoutDate ? (
-                        (() => {
-                          const d = new Date(checkoutDate + "T00:00:00");
-                          const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-                          const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-                          return (
-                            <>
-                              <div className="flex items-baseline leading-none">
-                                <span className="text-xl font-black text-gray-900 leading-none">{d.getDate()}</span>
-                                <span className="text-xs font-bold ml-1 text-gray-900 leading-none">{monthNames[d.getMonth()] + "'" + String(d.getFullYear()).slice(2)}</span>
-                              </div>
-                              <div className="text-[10px] text-gray-500 leading-none mt-1">{dayNames[d.getDay()]}</div>
-                            </>
-                          );
-                        })()
-                      ) : (
-                        <div className="text-sm font-bold text-gray-400 mt-1">Select Date</div>
-                      )}
-                      <input
-                        ref={returnDateRef}
-                        type="date"
-                        value={checkoutDate}
-                        onChange={e => handleReturnDateChange(e.target.value)}
-                        className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
-                      />
-                    </>
-                  ) : (
-                    <div className="text-[10px] font-semibold text-gray-400 leading-tight mt-1">Tap to add return</div>
-                  )}
+              }}
+              className="col-span-1 md:col-span-2 border border-gray-200 rounded-xl p-4 bg-white hover:border-[#008cff]/50 hover:bg-[#008cff]/5 cursor-pointer transition-all duration-300 relative hover:-translate-y-0.5 hover:shadow-md z-10 hover:z-20"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#008cff] shrink-0">
+                  <span className="material-symbols-outlined text-[20px]">calendar_today</span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">{isHotel ? 'Check-Out' : 'Return'}</div>
+                  <div className="mt-0.5 relative">
+                    {isHotel || tripType === 'roundtrip' ? (
+                      <>
+                        {checkoutDate ? (
+                          (() => {
+                            const d = new Date(checkoutDate + "T00:00:00");
+                            const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+                            const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+                            return (
+                              <>
+                                <div className="flex items-baseline leading-none">
+                                  <span className="text-xl font-black text-gray-900 leading-none">{d.getDate()}</span>
+                                  <span className="text-xs font-bold ml-1 text-gray-900 leading-none">{monthNames[d.getMonth()] + "'" + String(d.getFullYear()).slice(2)}</span>
+                                </div>
+                                <div className="text-[10px] text-gray-500 leading-none mt-1">{dayNames[d.getDay()]}</div>
+                              </>
+                            );
+                          })()
+                        ) : (
+                          <div className="text-sm font-bold text-gray-400 mt-1">Select Date</div>
+                        )}
+                        <input
+                          ref={returnDateRef}
+                          type="date"
+                          value={checkoutDate}
+                          onChange={e => handleReturnDateChange(e.target.value)}
+                          className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
+                        />
+                      </>
+                    ) : (
+                      <div className="text-[10px] font-semibold text-gray-400 leading-tight mt-1">Tap to add return</div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
+
+          {/* PICK-UP TIME (Cabs only) */}
+          {activeTab === 'cabs' && (
+            <div 
+              ref={timeRef}
+              onClick={() => setShowTimeDropdown(!showTimeDropdown)}
+              className="col-span-1 md:col-span-2 border border-gray-200 rounded-xl p-4 bg-white hover:border-[#008cff]/50 hover:bg-[#008cff]/5 cursor-pointer transition-all duration-300 relative hover:-translate-y-0.5 hover:shadow-md z-35"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#008cff] shrink-0">
+                  <span className="material-symbols-outlined text-[20px]">schedule</span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Pick-Up Time</div>
+                  <div className="text-lg font-black text-gray-900 leading-none mt-1">{pickupTime}</div>
+                </div>
+              </div>
+
+              {/* Time Dropdown */}
+              {showTimeDropdown && (
+                <div 
+                  className="absolute top-[100%] right-0 md:left-0 md:right-auto w-[180px] max-h-[200px] overflow-y-auto no-scrollbar z-50 bg-white rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.15)] border border-gray-100 py-2 mt-2 cursor-default"
+                  onClick={e => e.stopPropagation()}
+                >
+                  {[
+                    "06:00 AM", "07:00 AM", "08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM",
+                    "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM",
+                    "06:00 PM", "07:00 PM", "08:00 PM", "09:00 PM", "10:00 PM", "11:00 PM",
+                    "12:00 AM", "01:00 AM", "02:00 AM", "03:00 AM", "04:00 AM", "05:00 AM"
+                  ].map((t) => (
+                    <button
+                      key={t}
+                      onClick={() => { setPickupTime(t); setShowTimeDropdown(false); }}
+                      className={`w-full text-left px-4 py-2 text-xs font-semibold hover:bg-[#008cff]/10 hover:text-[#008cff] transition-colors ${pickupTime === t ? 'bg-[#eaf5ff] text-[#008cff] font-bold' : 'text-gray-700'}`}
+                    >
+                      {t}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
 
           {/* TRAVELLERS & CLASS */}
           <div
-            className={`col-span-1 md:col-span-2 border border-gray-200 rounded-xl p-4 bg-white hover:border-[#008cff]/50 hover:bg-[#008cff]/5 cursor-pointer transition-all duration-300 relative hover:-translate-y-0.5 hover:shadow-md ${showTravellerDropdown ? 'ring-2 ring-[#008cff] border-[#008cff] shadow-md bg-white z-30' : 'z-10 hover:z-20'}`}
+            className={`${guestsSpan} border border-gray-200 rounded-xl p-4 bg-white hover:border-[#008cff]/50 hover:bg-[#008cff]/5 cursor-pointer transition-all duration-300 relative hover:-translate-y-0.5 hover:shadow-md ${showTravellerDropdown ? 'ring-2 ring-[#008cff] border-[#008cff] shadow-md bg-white z-30' : 'z-10 hover:z-20'}`}
             onClick={() => setShowTravellerDropdown(true)}
             ref={travellerRef}
           >
@@ -809,51 +895,7 @@ export function SearchWidget() {
 
 
 
-        {/* ── Bottom Actions Area ── */}
-        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between mb-8 gap-4">
-          {/* Price Drop Protection Banner */}
-          {(activeTab === "flights" || activeTab === "trains") && (
-            <div className="flex-1">
-              <div className="bg-gradient-to-r from-blue-50 to-[#eaf5ff] border border-blue-100 rounded-lg p-3 flex items-center relative overflow-hidden">
-                <div className="absolute right-0 top-0 bottom-0 w-24 bg-blue-100/50 skew-x-[-20deg] translate-x-12" />
-                <input
-                  className="w-5 h-5 text-[#008cff] border-gray-300 rounded focus:ring-[#008cff] mr-3 shrink-0"
-                  id="priceDrop"
-                  type="checkbox"
-                  checked={priceDropChecked}
-                  onChange={() => setPriceDropChecked(!priceDropChecked)}
-                />
-                <label className="flex flex-col cursor-pointer z-10" htmlFor="priceDrop">
-                  <span className="text-xs font-bold text-black">
-                    Add Price Drop Protection{' '}
-                    <span className="font-normal text-[#4a4a4a] ml-1 hidden sm:inline">If the price drops, we'll refund the difference.</span>
-                    <span className="text-[#008cff] ml-2 font-semibold cursor-pointer">View Details</span>
-                  </span>
-                </label>
-                <div className="ml-auto z-10 shrink-0">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white">
-                    <span className="text-lg font-bold">₹</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
 
-          {/* Right Side Utility Buttons */}
-          <div className="flex items-center space-x-3 md:space-x-4 shrink-0">
-            {/* Flight Tracker */}
-            <button className="flex items-center border border-gray-200 rounded-lg px-3 md:px-4 py-3 hover:shadow-md transition-shadow bg-white">
-              <svg className="w-5 h-5 text-blue-500 mr-2 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" /></svg>
-              <span className="text-sm font-bold text-[#4a4a4a] whitespace-nowrap">Flight Tracker</span>
-            </button>
-            {/* Duty Free */}
-            <button className="relative flex items-center border border-gray-200 rounded-lg px-3 md:px-4 py-3 hover:shadow-md transition-shadow bg-white">
-              <span className="absolute top-[-10px] left-2 bg-purple-100 text-purple-600 text-[9px] font-bold px-1 rounded">10% off</span>
-              <svg className="w-5 h-5 text-blue-500 mr-2 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zM10 4h4v2h-4V4zm10 15H4V8h16v11z" /></svg>
-              <span className="text-sm font-bold text-[#4a4a4a] whitespace-nowrap">Shop Duty Free</span>
-            </button>
-          </div>
-        </div>
 
         {/* ── Floating Search Button ── */}
         <div className="absolute bottom-[-24px] left-1/2 -translate-x-1/2 z-30">
