@@ -129,11 +129,22 @@ function getMockFlights(
     const departureTime = i === 0 ? "08:15" : i === 1 ? "13:30" : "18:45";
     const arrivalTime = i === 0 ? "11:00" : i === 1 ? "17:40" : "00:50";
     const flightNo = Math.floor(100 + Math.random() * 900).toString();
+    // Convert dates to DDMM for Aviasales format
+    const parseDDMM = (ymd: string) => {
+      if (!ymd || !ymd.includes("-")) return "";
+      const parts = ymd.split("-");
+      if (parts.length < 3) return "";
+      return `${parts[2]}${parts[1]}`;
+    };
 
-    // Web Search link to Jetradar via Travelpayouts
-    const targetUrl = `https://www.jetradar.com/search/?origin=${origin}&destination=${destination}&date=${departureDate}${returnDate ? `&return_date=${returnDate}` : ''}&adults=${passengers}&cls=Y`;
-    const bookingUrl = `https://tp.media/r?marker=${marker}&trs=534470&p=4110&campaign_id=137&u=${encodeURIComponent(targetUrl)}`;
+    const depDDMM = parseDDMM(departureDate);
+    const retDDMM = returnDate ? parseDDMM(returnDate) : "";
+    const passengerStr = `${passengers}`;
+    const classChar = "y"; // Economy
+    const currencyCode = baseCurrency;
 
+    const aviasalesSearchUrl = `https://www.aviasales.com/search/${origin.toUpperCase()}${depDDMM}${destination.toUpperCase()}${retDDMM}${passengerStr}${classChar}?currency=${currencyCode}&request_source=country_change`;
+    const bookingUrl = `https://aviasales.tpk.lv/ok6lj7IX?u=${encodeURIComponent(aviasalesSearchUrl)}`;
     list.push({
       id: `f-${origin}-${destination}-${i}-${flightNo}`,
       airlineName: airline.name,
