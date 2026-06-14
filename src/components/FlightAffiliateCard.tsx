@@ -54,7 +54,17 @@ export function FlightAffiliateCard({ flight }: FlightAffiliateCardProps) {
               {flight.airlineCode}-{flight.flightNumber}
             </span>
           </div>
-          <span className="text-xs text-gray-500 dark:text-gray-400">Class: Economy</span>
+          <div className="flex flex-wrap items-center gap-2 mt-1">
+            <span className="text-[10px] bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-400 px-1.5 py-0.5 rounded font-semibold">
+              Economy
+            </span>
+            <span className="text-[10px] text-gray-500 dark:text-gray-450 flex items-center gap-0.5" title="Cabin Baggage Included">
+              🎒 7kg
+            </span>
+            <span className="text-[10px] text-gray-500 dark:text-gray-450 flex items-center gap-0.5" title="Check-in Baggage Included">
+              🧳 15kg
+            </span>
+          </div>
         </div>
       </div>
 

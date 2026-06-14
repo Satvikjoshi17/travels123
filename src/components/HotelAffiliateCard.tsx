@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Star, MapPin, ExternalLink, ShieldCheck } from "lucide-react";
 
@@ -21,7 +21,15 @@ interface HotelAffiliateCardProps {
   hotel: HotelData;
 }
 
+const FALLBACK_HOTEL_IMAGE = "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&auto=format&fit=crop&q=60";
+
 export function HotelAffiliateCard({ hotel }: HotelAffiliateCardProps) {
+  const [imgSrc, setImgSrc] = useState(hotel.imageUrl || FALLBACK_HOTEL_IMAGE);
+
+  useEffect(() => {
+    setImgSrc(hotel.imageUrl || FALLBACK_HOTEL_IMAGE);
+  }, [hotel.imageUrl]);
+
   // Star rendering helper
   const renderStars = (count: number) => {
     return Array.from({ length: 5 }).map((_, idx) => (
@@ -41,13 +49,11 @@ export function HotelAffiliateCard({ hotel }: HotelAffiliateCardProps) {
       
       {/* Hotel Image Panel */}
       <div className="relative w-full sm:w-48 h-48 sm:h-full shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-800">
-        <Image
-          src={hotel.imageUrl}
+        <img
+          src={imgSrc}
           alt={hotel.name}
-          fill
-          sizes="(max-width: 640px) 100vw, 192px"
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-          unoptimized // To prevent Next.js image optimization errors with external URLs
+          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          onError={() => setImgSrc(FALLBACK_HOTEL_IMAGE)}
         />
         {/* Rating Badge */}
         <div className="absolute top-3 left-3 bg-white/95 dark:bg-surface-container/95 backdrop-blur-md text-gray-950 dark:text-white font-bold text-xs px-2.5 py-1 rounded-lg shadow-md flex items-center gap-1 border border-white/20">
@@ -65,8 +71,13 @@ export function HotelAffiliateCard({ hotel }: HotelAffiliateCardProps) {
             <h3 className="font-extrabold text-lg text-gray-900 dark:text-white leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
               {hotel.name}
             </h3>
-            <div className="flex items-center gap-0.5 shrink-0">
-              {renderStars(hotel.stars)}
+            <div className="flex items-center gap-1.5 shrink-0">
+              <span className="text-[11px] font-bold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 px-1.5 py-0.5 rounded">
+                {hotel.rating.toFixed(1)}
+              </span>
+              <div className="flex items-center gap-0.5">
+                {renderStars(hotel.stars)}
+              </div>
             </div>
           </div>
 

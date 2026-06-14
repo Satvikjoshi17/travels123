@@ -88,6 +88,14 @@
   --text-body-lg: 16px;
   --text-body-lg--line-height: 24px;
   --text-body-lg--font-weight: 400;
+
+  --animate-gemini-gradient: gemini-gradient 15s ease infinite;
+
+  @keyframes gemini-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 }
 
 @layer base {
@@ -307,4 +315,24 @@
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
+
+}
+
+/* ────────── Top-level Global AI Background Gradient ────────── */
+.gemini-ai-bg {
+  background: linear-gradient(-45deg, #eef2ff, #f5f3ff, #fdf2f8, #ecfeff) !important;
+  background-size: 400% 400% !important;
+  animation: gemini-gradient 15s ease infinite !important;
+}
+
+.dark .gemini-ai-bg {
+  background: linear-gradient(-45deg, #020617, #0b1329, #120e29, #041f1a) !important;
+  background-size: 400% 400% !important;
+  animation: gemini-gradient 15s ease infinite !important;
+}
+
+@keyframes gemini-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
