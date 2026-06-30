@@ -1,6 +1,81 @@
 "use client";
 
 import Image from "next/image";
+
+const packages = [
+  {
+    title: "Bali",
+    country: "Indonesia",
+    days: "7 Days",
+    rating: "4.9",
+    tagline: "Island of Gods",
+    image: "/images/maldives1.png",
+    stamp: "🌴",
+  },
+  {
+    title: "Santorini",
+    country: "Greece",
+    days: "5 Days",
+    rating: "4.8",
+    tagline: "Sunsets & White Houses",
+    image: "/images/santorini.png",
+    stamp: "🏛️",
+  },
+  {
+    title: "Paris",
+    country: "France",
+    days: "6 Days",
+    rating: "4.9",
+    tagline: "City of Love",
+    image: "/images/paris.png",
+    stamp: "🗼",
+  },
+  {
+    title: "Dubai",
+    country: "UAE",
+    days: "4 Days",
+    rating: "4.7",
+    tagline: "Luxury Meets Desert",
+    image: "/images/dubai.jpg",
+    stamp: "🐪",
+  },
+];
+
+/*for square change mt and height and icon place*/
+const categories = [
+  {
+    title: "Adventure Tours",
+    image: "/images/paris.png",
+    className: "mt-15",
+  },
+  {
+    title: "Cultural Tours",
+    image: "/images/ujjain.png",
+    className: "mt-15",
+  },
+  {
+    title: "Beach Getaways",
+    image: "/images/beach.jpg",
+    className: "mt-15",
+  },
+  {
+    title: "Luxury Escapes",
+    image: "/images/dubai.png",
+    className: "mt-15",
+  },
+  {
+    title: "Family Vacations",
+    image: "/images/santorini.png",
+    className: "mt-15",
+  },
+  {
+    title: "Wildlife Expeditions",
+    image: "/images/mountains.png",
+    className: "mt-15",
+  },
+];
+
+
 import { useCurrency } from "@/contexts/CurrencyContext";
 import { CurrencySelector } from "@/components/CurrencySelector";
 import { Header } from "@/components/Header";
@@ -8,6 +83,7 @@ import { Footer } from "@/components/Footer";
 import { AIAssistantFAB } from "@/components/AIAssistantFAB";
 import { SearchWidget } from "@/components/SearchWidget";
 import { useEffect, useState } from "react";
+import { MapPin, Plane } from "lucide-react";
 
 export default function Home() {
   const { formatPrice, setModalOpen, selectedCountry } = useCurrency();
@@ -17,29 +93,278 @@ export default function Home() {
     setMounted(true);
   }, []);
 
+  
+
   return (
     <>
       <CurrencySelector />
       <Header />
+      <section className="relative overflow-hidden">
+  
+  {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-200 via-indigo-200 to-violet-200" />
 
-      <main className="pt-[104px] md:pt-[88px] pb-20 md:pb-0">
-        {/* Hero Section with Search Widget */}
-        <section className="relative min-h-[700px] md:min-h-[580px] flex flex-col items-center justify-center pt-8 pb-16 z-10 bg-gradient-to-b from-[#002244] via-[#003366] to-[#004080]">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-[-20%] right-[-10%] w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse" />
-            <div className="absolute bottom-[-10%] left-[-10%] w-72 h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse" style={{ animationDelay: "3s" }} />
+
+
+  
+  <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
+    <div className="grid lg:grid-cols-2 gap-10 items-center py-15">
+
+      {/* LEFT CONTENT */}
+      <div>
+
+        <h1 className="text-3xl lg:text-5xl font-bold">
+          Every Journey
+          <br />
+          <span className="text-blue-900">Starts Here</span>
+        </h1>
+
+        <p className="mt-2 text-base text-slate-600 max-w-lg">
+          Compare prices from 100+ travel providers and
+          book with confidence.
+        </p>
+
+        {/* TRUST STATS */}
+        <div className="flex flex-wrap gap-8 mt-5">
+          <div>
+            <h3 className="font-bold text-xl">2M+</h3>
+            <p className="text-slate-500">
+              Happy Travelers
+            </p>
           </div>
 
-          <div className="relative z-10 w-full max-w-[1300px] px-4 md:px-6 text-center mb-6 animate-fade-in mx-auto">
-            <h1 className="text-[clamp(24px,5vw,42px)] leading-[1.2] font-bold text-white mb-3 drop-shadow-lg">Your Smartest Way to Travel</h1>
-            <p className="text-[13px] md:text-base text-white/80 mb-8 max-w-2xl mx-auto drop-shadow-md">Search and compare over 100+ travel sites in seconds. Get the best prices, guaranteed.</p>
-
-            {/* Search Widget */}
-            <SearchWidget />
+          <div>
+            <h3 className="font-bold text-xl">100+</h3>
+            <p className="text-slate-500">
+              Travel Partners
+            </p>
           </div>
-        </section>
 
+          <div>
+            <h3 className="font-bold text-xl">24/7</h3>
+            <p className="text-slate-500">
+              Customer Support
+            </p>
+          </div>
+        </div>
+      </div>
 
+      {/* RIGHT SIDE DESTINATION CARDS */}
+      <div className="relative w-full max-w-full mx-auto lg:mx-0 h-[190px] sm:h-[290px] lg:h-[220px]">
+
+      {/* japan*/}
+      <div className="absolute -left-1 -top-7 sm:left-6 sm:top-1 lg:left-10 lg:top-10">
+        <div className="relative">
+          <div className="relative w-30 h-30 sm:w-52 sm:h-52 lg:w-35 lg:h-35 rounded-full overflow-hidden border-[3px] border-white shadow-2xl">
+            <Image
+              src="/images/japan.png"
+              alt="japan"
+              fill
+              sizes="(max-width: 640px) 64px, 80px"
+            />
+          </div>
+
+          <div className="absolute left-1/2 -translate-x-1/2 -bottom-5 bg-white rounded-full px-5 py-1 shadow-lg flex items-center gap-2">
+            <MapPin size={16} className="text-violet-600" />
+            <span className="font-medium">Japan</span>
+          </div>
+        </div>
+      </div>
+
+      {/* ujjain - Large */}
+      <div className="absolute left-1/2 top-2 -translate-x-1/2 sm:top-3 lg:top-5">
+        <div className="relative">
+       <div className="relative w-30 h-30 sm:w-52 sm:h-52 lg:w-38 lg:h-38 rounded-full overflow-hidden border-[3px] border-white shadow-2xl">
+
+            <Image
+              src="/images/ujjain.png"
+              alt="ujjain"
+              fill
+               sizes="(max-width: 640px) 64px, 80px"
+            />
+          </div>
+
+          <div className="absolute left-1/2 -translate-x-1/2 -bottom-5 bg-white rounded-full px-5 py-1 shadow-lg flex items-center gap-2">
+            <MapPin size={16} className="text-violet-600" />
+            <span className="font-medium">Ujjain</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Agra */}
+      <div className="absolute -right-1 -top-7 sm:right-6 sm:top-1 lg:right-10 lg:top-10">
+        <div className="relative">
+        <div className="relative w-30 h-30 sm:w-52 sm:h-52 lg:w-35 lg:h-35 rounded-full overflow-hidden border-[3px] border-white shadow-2xl">
+            
+            <Image
+              src="/images/tajmahal.jpg"
+              alt="Agra"
+              fill
+              sizes="(max-width: 640px) 64px, 80px"
+            />
+          </div>
+
+          <div className="absolute left-1/2 -translate-x-1/2 -bottom-5 bg-white rounded-full px-5 py-1 shadow-lg flex items-center gap-2">
+            <MapPin size={16} className="text-violet-600" />
+            <span className="font-medium">Agra</span>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+</div>
+  {/* Search Widget */}
+  <SearchWidget />
+</section>
+ 
+ /*tour category*/
+<section className="relative py-15 bg-white overflow-hidden">
+ <div className="max-w-7xl mx-auto px-6">
+
+        {/* Heading */}
+        <div className="text-center">
+          <p className="text-blue-600 font-medium">
+            Wonderful place for You
+          </p>
+
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-2">
+            Tour Categories
+          </h2>
+        </div>
+
+        {/* Cards */}
+        <div className="flex justify-center items-start gap-6 flex-wrap lg:flex-nowrap">
+
+          {categories.map((category, index) => (
+            <div
+              key={index}
+              className={`${category.className} text-center group`}
+            >
+              <div
+                className={`
+                  relative overflow-hidden rounded-full
+                  ${
+                    index === 2 || index === 3
+                      ? "w-32 h-48 sm:w-44 sm:h-66"
+                      : "w-32 h-48 sm:w-44 sm:h-66"
+                  }
+                  shadow-lg cursor-pointer
+                `}
+              >
+                <Image
+                  src={category.image}
+                  alt={category.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 220px"
+                  className="object-cover transition duration-500 group-hover:scale-110"
+                />
+              </div>
+
+              <h3 className="mt-4 font-semibold text-lg">
+                {category.title}
+              </h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section className="py-5 bg-rose-100/50">
+      <div className="max-w-7xl mx-auto px-6">
+
+        {/* Heading */}
+        <div className="text-center mb-10">
+          <p className="text-sky-500 font-medium">
+            Curated Especially For You
+          </p>
+
+          <h2 className="text-4xl font-bold mt-2">
+            Premium Destination Packages
+          </h2>
+        </div>
+
+        {/* Postcards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-7">
+
+          {packages.map((item, index) => (
+            <div
+              key={index}
+              className="
+                group
+                relative
+                bg-[#fffdf8]
+                rounded-[28px]
+                overflow-hidden
+                shadow-lg
+                hover:-translate-y-3
+                transition-all duration-500
+                hover:rotate-0
+              "
+            >
+              {/* Stamp */}
+              <div className="absolute top-4 right-4 z-20 text-4xl">
+                {item.stamp}
+              </div>
+
+              {/* Image */}
+              <div className="relative h-64 overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover group-hover:scale-110 transition duration-700"
+                />
+              </div>
+
+              {/* Dashed Separator */}
+              <div className="border-t-2 border-dashed border-gray-300" />
+
+              {/* Content */}
+              <div className="p-3">
+
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="text-2xl font-bold">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-gray-500">
+                      📍 {item.country}
+                    </p>
+                  </div>
+
+                  <span className="bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm">
+                    ⭐ {item.rating}
+                  </span>
+                </div>
+
+                <p className="mt-2 text-gray-600 italic">
+                  "{item.tagline}"
+                </p>
+
+                <div className="flex justify-between items-center mt-3">
+                  <span className="font-medium">
+                    {item.days}
+                  </span>
+
+                  <button
+                    className="
+                      w-10 h-10 rounded-full
+                      bg-sky-500 text-white
+                      flex items-center justify-center
+                    "
+                  >
+                    →
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
         {/* Premium Holiday Packages Section */}
         <section className="py-stack-lg bg-surface transition-colors duration-300">
           <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
@@ -382,7 +707,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </main>
+    
 
       <Footer />
 

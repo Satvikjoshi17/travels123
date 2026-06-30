@@ -16,10 +16,10 @@ export function Header() {
   return (
     <>
       {/* Desktop + Mobile Header */}
-      <nav className="bg-surface/80 dark:bg-surface/75 backdrop-blur-2xl border-b border-outline-variant/15 dark:border-white/5 fixed top-0 w-full z-50 transition-colors duration-300 shadow-sm dark:shadow-none">
+      <nav className="bg-surface/70 dark:bg-surface/75 backdrop-blur-2xl border-b border-outline-variant/15 dark:border-white/5 fixed top-0 w-full z-50 transition-colors duration-300 shadow-sm dark:shadow-none">
         <div className="max-w-container-max mx-auto">
           {/* Top Row — Logo, Actions */}
-          <div className="flex justify-between items-center px-margin-mobile md:px-gutter h-16 md:h-20">
+          <div className="flex justify-between items-center px-margin-mobile md:px-gutter h-12 md:h-14">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
               <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-300">
